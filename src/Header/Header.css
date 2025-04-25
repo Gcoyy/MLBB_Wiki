@@ -1,0 +1,66 @@
+.header {
+    background: rgba(0, 0, 0, 0.25);
+    height: 15vh;
+    display: flex;
+    /* justify-content: center; */
+    justify-content: space-around;
+    align-items: center;
+    color: #C9AC67;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    width: 100%;
+    position: absolute;
+    z-index: 1000;
+}
+
+.logo {
+    /* border: 2px solid black; */
+    height: 12vh;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    width: 55vw;
+    cursor: pointer;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #C9AC67;
+    font-size: clamp(1rem, 1.5vw, 2.5rem);
+    font-weight: 500;
+
+}
+
+.menu a.active {
+    color: #FFE198;
+    text-decoration: underline;
+}
+
+.settings {
+    display: flex;
+    align-items: center;
+    height: 7vh;
+    border: 2px solid #C9AC67;
+    justify-content: space-around;
+    width: 16vw;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.settings_icon {
+    height: 80%;
+}
+
+.settings p {
+    cursor: pointer;
+    font-size: clamp(1rem, 2vw, 2.5rem);
+}
+
+.triangle {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #C9AC67;
+    border-bottom: none;
+}

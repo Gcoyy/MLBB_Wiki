@@ -1,0 +1,84 @@
+/* .SiteMap {
+    padding-top: 15vh;
+    background-image: url("Logo.png"), url("Background.png");
+    background-size: 200px, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    height: 100vh;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* body {
+  font-family: 'Inter', sans-serif;
+} */
+
+
+.SiteMap {
+    position: relative;
+    padding-top: 15vh;
+    background-image: url("Background.png");
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+    font-family: 'Inter', sans-serif;
+}
+
+.SiteMap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url("Logo.png");
+    background-repeat: no-repeat;
+    background-size: 70%; /* adjust logo size */
+    background-position: center;
+    opacity: 0.3; /* 🔥 controls transparency */
+    pointer-events: none; /* lets clicks pass through */
+}
+
+
+.sitemap-title {
+    padding: 50px 0px;
+    text-align: center;
+    color: white;
+}
+
+.sitemap-container {
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    height: 60vh;
+}
+
+.sitemap-container-left {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.sitemap-container-right {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.sitemap-vertical-line {
+    border-left: 2px solid white;
+    height: 60vh;
+}
+
+.sitemap-container-item {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: clamp(1rem, 1.5vw, 2.5rem);
+    font-weight: 700;
+}
+
+.sitemap-container-item:hover {
+    color: blue;
+    text-decoration: underline;
+}
