@@ -8,10 +8,10 @@ const lanes = [
       name: "Exp Lane",
       icon: "/Exp Lane Icon.png",
       heroes: [
-        "/images/exp-hero1.png",
-        "/images/exp-hero2.png",
-        "/images/exp-hero3.png",
-        "/images/exp-hero4.png",
+        "/public/exp-hero1.png",
+        "/public/exp-hero2.png",
+        "/public/exp-hero3.png",
+        "/public/exp-hero4.png",
       ],
     },
     {
@@ -19,10 +19,10 @@ const lanes = [
       name: "Gold Lane",
       icon: "/Gold Lane Icon.png",
       heroes: [
-        "/images/gold-hero1.png",
-        "/images/gold-hero2.png",
-        "/images/gold-hero3.png",
-        "/images/gold-hero4.png",
+        "/public/gold-hero1.png",
+        "/public/gold-hero2.png",
+        "/public/gold-hero3.png",
+        "/public/gold-hero4.png",
       ],
     },
     {
@@ -30,10 +30,10 @@ const lanes = [
       name: "Mid Lane",
       icon: "/Mid Lane Icon.png",
       heroes: [
-        "/images/mid-hero1.png",
-        "/images/mid-hero2.png",
-        "/images/mid-hero3.png",
-        "/images/mid-hero4.png",
+        "/public/mid-hero1.png",
+        "/public/mid-hero2.png",
+        "/public/mid-hero3.png",
+        "/public/mid-hero4.png",
       ],
     },
     {
@@ -41,10 +41,10 @@ const lanes = [
         name: "Jungle",
         icon: "/Jungle Lane Icon.png",
         heroes: [
-          "/images/jungle-hero1.png",
-          "/images/jungle-hero2.png",
-          "/images/jungle-hero3.png",
-          "/images/jungle-hero4.png",
+          "/public/jungle-hero1.png",
+          "/public/jungle-hero2.png",
+          "/public/jungle-hero3.png",
+          "/public/jungle-hero4.png",
         ],
       },
       {
@@ -62,6 +62,16 @@ const lanes = [
 
 function Lane() {
     const [selectedLane, setSelectedLane] = useState(lanes[0]);
+    const [index, setIndex] = useState(0);
+
+    const next = () => {
+      setIndex((index + 1) % selectedLane.heroes.length);
+    };
+  
+    const prev = () => {
+      setIndex((index - 1 + selectedLane.heroes.length) % selectedLane.heroes.length);
+    };
+  
 
     return (
         <div className='Lane'>
@@ -94,15 +104,18 @@ function Lane() {
                   <h1 className='lane-title'>{selectedLane.name.toUpperCase()}</h1>
                   <div className='line'/>
                 </div>
-                <div className="heroes">
-                {selectedLane.heroes.map((hero, index) => (
-                    <img
-                    key={index}
-                    src={hero}
-                    alt={`Hero ${index + 1}`}
-                    className="hero-card"
-                    />
-                ))}
+                <div className='lane-content-right'>
+                  <div className="heroes" style={{ transform: `translateX(-${index * 100}%)` }}>
+                    {selectedLane.heroes.map((hero, index) => (
+                      <div className="hero-card" key={index}>
+                        <img src={hero} alt={`Hero ${index + 1}`} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="carousel-btn-container">
+                    <button className="carousel-btn-prev" onClick={prev}>‹</button>
+                    <button className="carousel-btn-next" onClick={next}>›</button>
+                  </div>
                 </div>
             </div>
             </div>

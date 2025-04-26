@@ -94,7 +94,7 @@
 .line {
   background-color: white;
   height: 2px;
-  width: 100%;
+  width: 90%;
 }
 
 .lane-title {
@@ -119,5 +119,116 @@
   flex-direction: column;
   align-items: center;
   padding-top: 5%;
-  gap: 7%;
+  gap: 6%;
+}
+
+.lane-content-right {
+  width: 65%;
+  overflow: hidden;
+  /* border: 2px solid white; */
+}
+
+.heroes {
+  /* border: 2px solid red; */
+  height: 70%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  gap: .5rem;
+  overflow: hidden;
+}
+
+/* .hero-card {
+  width: auto;
+  height: 27rem;
+  object-fit: cover;
+  overflow: hidden;
+  
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 1);
+} */
+
+.hero-card {
+  position: relative;
+  width: 200px; /* or any base width you like */
+  height: 27rem;
+  overflow: hidden;
+  transition: width 0.3s ease, transform 0.3s ease;
+}
+
+.hero-card:hover {
+  width: 220px; /* slightly wider on hover */
+  transform: scale(1.05); /* optional: add a smooth zoom effect */
+}
+
+.hero-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.hero-card:hover img {
+  transform: scale(1.05); /* zoom the image a bit */
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #C9AC67;
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+
+.hero-card:hover::after {
+  background-color: rgba(0, 0, 0, 0.2); /* lighten overlay on hover */
+}
+
+.carousel-btn-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 1rem;
+}
+
+.carousel-btn-prev {
+  background-color: transparent;
+  border: 2px solid #81BBE9;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #81BBE9;
+
+  width: 5rem;
+  height: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0.5rem; /* Adjust how far from the left edge */
+}
+
+.carousel-btn-next {
+  background-color: transparent;
+  border: 2px solid #81BBE9;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #81BBE9;
+
+  width: 5rem;
+  height: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.5rem; 
 }
