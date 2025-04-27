@@ -109,12 +109,13 @@
   display: flex;
   /* justify-content:space-evenly; */
   /* border: 2px solid white; */
-  width: 100%;
+  width: 80rem;
+  
 }
 
 .lane-content-left {
   /* border: 2px solid white; */
-  width: 35%;
+  width: 35rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,41 +124,27 @@
 }
 
 .lane-content-right {
-  width: 65%;
+  width: 65rem;
+  position: relative;
   overflow: hidden;
-  /* border: 2px solid white; */
 }
 
 .heroes {
-  /* border: 2px solid red; */
-  height: 70%;
-  width: 100%;
+  height: 70%;;
+  width: 100rem;
   display: flex;
   align-items: center;
-  padding-left: 1rem;
-  padding-top: 1rem;
+  overflow-x: hidden;
+  padding-left: 5rem;
+  padding-top: 2rem;
   gap: .5rem;
   overflow: hidden;
+  transition: transform 0.5s ease;
 }
-
-/* .hero-card {
-  width: auto;
-  height: 27rem;
-  object-fit: cover;
-  overflow: hidden;
-  
-}
-
-.hero-card::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 1);
-} */
 
 .hero-card {
   position: relative;
-  width: 200px; /* or any base width you like */
+  width: 200px; 
   height: 27rem;
   overflow: hidden;
   transition: width 0.3s ease, transform 0.3s ease;
@@ -198,7 +185,7 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 0px 1rem;
+  padding: 0px 5rem;
 }
 
 .carousel-btn-prev {
@@ -231,4 +218,21 @@
   align-items: center;
   justify-content: flex-end;
   padding-right: 0.5rem; 
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  width: fit-content;
+  font-family: 'Inter', sans-serif;
+  text-decoration: underline;
+  text-decoration-color: #C9AC67;
+  color: white;
+  padding-left: 1rem;
+  padding-top: 1rem;
+}
+
+span {
+  text-decoration: none;
 }
