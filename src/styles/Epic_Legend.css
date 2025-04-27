@@ -1,0 +1,356 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* Main container */
+.el-mobile-legends-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: transparent;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Background image */
+.el-background-image {
+    width: 100vw;
+    height: 100vh;
+    position: fixed; /* Changed to fixed */
+    left: 0;
+    top: 0;
+    z-index: -1; /* Send to back */
+    box-shadow: inset 0px 125px 20px 20px rgba(0, 0, 0, 0.25);
+    filter: blur(10px);
+}
+
+/* Rank sidebar - Epic-Legend Purple Theme */
+.el-rank-sidebar {
+  width: 430px;
+  height: 862px;
+  position: absolute;
+  left: 79px;
+  top: 194px;
+  background-color: #297fc1; /* Epic-Legend purple */
+  box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
+}
+
+/* Rank titles */
+.el-rank-title {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: max-content;
+}
+
+.el-rank-title-active {
+  top: 301px;
+  cursor: default;
+}
+
+.el-rank-title-inactive {
+  top: 301;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.el-rank-title-inactive:hover {
+  opacity: 0.8;
+}
+
+.el-rank-title:nth-of-type(1) { top: 137px; } /* WARRIOR-GM */
+.el-rank-title:nth-of-type(2) { top: 301px; } /* EPIC-LEGEND */
+.el-rank-title:nth-of-type(3) { top: 469px; } /* MYTHIC */
+.el-rank-title:nth-of-type(4) { top: 637px; } /* MYTHICAL HONOR */
+.el-rank-title:nth-of-type(5) { top: 805px; } /* MYTHICAL GLORY */
+
+/* Rank icons */
+.el-rank-icon {
+  width: 110px;
+  height: 115px;
+  position: absolute;
+}
+
+.el-rank-icon-active {
+  cursor: default;
+}
+
+.el-rank-icon-inactive {
+  opacity: 0.5;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.el-rank-icon-inactive:hover {
+  opacity: 0.8;
+}
+
+/* Icon positions */
+.el-warrior-icon { left: 53px; top: 18px; }
+.el-grandmaster-icon { left: 274px; top: 18px; }
+.el-epic-icon { left: 53px; top: 186px; }
+.el-legend-icon { left: 274px; top: 186px; }
+.el-mythic-icon { left: 165px; top: 346px; }
+.el-mythical-honor-icon { left: 165px; top: 514px; }
+.el-mythical-glory-icon { left: 165px; top: 682px; }
+
+/* Rank separators */
+.el-rank-separator {
+  position: absolute;
+  font-family: serif;
+  font-size: 96px;
+  font-weight: bold;
+  color: #c9ac67;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.el-rank-separator-active {
+  width: 32px;
+  top: 152px; /* Positioned between Epic-Legend icons */
+}
+
+.el-rank-separator-inactive {
+  width: 32px;
+  height: 141px;
+  top: -2px;
+  opacity: 0.5;
+}
+
+.el-horizontal-line {
+  width: 380px;
+  height: 0;
+  position: absolute;
+  border: 2px solid #82bcea;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 38px;
+}
+
+/* Header */
+.el-header-section {
+  width: 100%;
+  height: 172px;
+  position: relative;
+}
+
+.el-navigation-menu {
+  width: 100%;
+  height: 57px;
+  position: absolute;
+  top: 115px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.el-nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.el-nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
+
+.el-language-selector {
+  width: 260px;
+  height: 57px;
+  position: relative;
+}
+
+.el-language-selector-border {
+  width: 260px;
+  height: 57px;
+  border: 2px solid #c9ac67;
+  display: flex;
+  align-items: center;
+  padding-left: 60px;
+}
+
+.el-language-text {
+  font-family: serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: #c9ac67;
+}
+
+.el-language-icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 14px;
+  top: 9px;
+}
+
+.el-logo-container {
+  width: 345px;
+  height: 172px;
+  position: absolute;
+  left: 50px;
+  top: 0;
+  overflow: hidden;
+}
+
+.el-logo-wrapper {
+  width: 340.46px;
+  height: 339.47px;
+  position: absolute;
+  left: 2.27px;
+  top: -74.26px;
+}
+
+.el-logo-image {
+  width: 340.46px;
+  height: 339.47px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Content */
+.el-main-title {
+  width: 1067px;
+  height: 99px;
+  position: absolute;
+  left: 651px;
+  top: 177px;
+  font-family: 'Inter', sans-serif;
+  font-size: 64px;
+  font-weight: 600;
+  color: white;
+}
+
+.el-vertical-line {
+  width: 864.02px;
+  height: 0;
+  position: absolute;
+  left: 586.97px;
+  top: 191.99px;
+  transform: rotate(90deg);
+  transform-origin: top left;
+  border: 4px solid #82bcea;
+}
+
+.el-subtitle {
+  width: 1111px;
+  position: absolute;
+  left: 653px;
+  top: 296px;
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: white;
+}
+
+/* Content area */
+.el-content-container {
+  width: 100%;
+  position: relative;
+}
+
+.el-content-area {
+  width: 1277px;
+  height: 543px;
+  position: absolute;
+  left: 658px;
+  top: 409px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+.el-section-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.el-section-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.el-strategies-container {
+  margin-bottom: 24px;
+}
+
+.el-strategy-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.el-rank-hero-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: white;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.el-heroes-container {
+  margin-top: 20px;
+}
+
+/* Play button */
+.el-play-button {
+    transform: rotate(180deg);
+    transform-origin: top left;
+    width: 221.12px;
+    height: 57.39px;
+    position: absolute;
+    left: 1851.12px;
+    top: 1042.39px;
+  }
+  
+  .el-play-button-border {
+    width: 221.12px;
+    height: 57.39px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: rotate(180deg);
+    transform-origin: top left;
+    border: 2px solid #81bbe9;
+  }
+
+  .el-feature-list {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: white;
+    list-style-type: none;
+    padding-left: 20px;
+  }
+  
+  .el-feature-item {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  .el-feature-item::before {
+    content: "•";
+    color: #c9ac67;
+    position: absolute;
+    left: -20px;
+  }

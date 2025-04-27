@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* Main container - RESTORED with scroll fix */
+.wg-mobile-legends-container {
+  width: 100vw;
+  min-height: 100vh; /* Changed to min-height */
+  position: relative;
+  background-color: transparent;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-y: auto; /* Enable vertical scroll */
+}
+
+/* Background image - RESTORED with z-index fix */
+.wg-background-image {
+  width: 100vw;
+  height: 100vh;
+  position: fixed; /* Changed to fixed */
+  left: 0;
+  top: 0;
+  z-index: -1; /* Send to back */
+  box-shadow: inset 0px 125px 20px 20px rgba(0, 0, 0, 0.25);
+  filter: blur(10px);
+}
+
+/* Rank sidebar - RESTORED original positioning */
+.wg-rank-sidebar {
+  width: 430px;
+  height: 862px;
+  position: absolute;
+  left: 79px;
+  top: 194px;
+  background-color: #297fc1;
+  box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
+}
+
+/* Rank titles - RESTORED original positioning */
+.wg-rank-title {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: max-content;
+}
+
+.wg-rank-title-active {
+  top: 137px;
+  cursor: default;
+}
+
+.wg-rank-title-inactive {
+  top: 301px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.wg-rank-title-inactive:hover {
+  opacity: 0.8;
+}
+
+.wg-rank-title:nth-of-type(2) {
+  top: 469px;
+}
+
+.wg-rank-title:nth-of-type(3) {
+  top: 637px;
+}
+
+.wg-rank-title:nth-of-type(4) {
+  top: 805px;
+}
+
+/* Rank icons - RESTORED original positioning */
+.wg-rank-icon {
+  width: 110px;
+  height: 115px;
+  position: absolute;
+}
+
+.wg-rank-icon-active {
+  cursor: default;
+}
+
+.wg-rank-icon-inactive {
+  opacity: 0.5;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.wg-rank-icon-inactive:hover {
+  opacity: 0.8;
+}
+
+.wg-warrior-icon {
+  left: 53px;
+  top: 18px;
+}
+
+.wg-grandmaster-icon {
+  left: 274px;
+  top: 18px;
+}
+
+.wg-epic-icon {
+  left: 53px;
+  top: 186px;
+}
+
+.wg-legend-icon {
+  left: 274px;
+  top: 186px;
+}
+
+.wg-mythic-icon {
+  left: 165px;
+  top: 346px;
+}
+
+.wg-mythical-honor-icon {
+  left: 165px;
+  top: 514px;
+}
+
+.wg-mythical-glory-icon {
+  left: 165px;
+  top: 682px;
+}
+
+/* Rank separators - RESTORED original positioning */
+.wg-rank-separator {
+  position: absolute;
+  font-family: serif;
+  font-size: 96px;
+  font-weight: bold;
+  color: #c9ac67;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.wg-rank-separator-active {
+  width: 32px;
+  top: -2px;
+}
+
+.wg-rank-separator-inactive {
+  width: 32px;
+  height: 141px;
+  top: 152px;
+  opacity: 0.5;
+}
+
+.wg-horizontal-line {
+  width: 380px;
+  height: 0;
+  position: absolute;
+  border: 2px solid #82bcea;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.wg-rank-title:nth-of-type(1) .wg-horizontal-line { top: 38px; }
+.wg-rank-title:nth-of-type(2) .wg-horizontal-line { top: 38px; }
+.wg-rank-title:nth-of-type(3) .wg-horizontal-line { top: 38px; }
+.wg-rank-title:nth-of-type(4) .wg-horizontal-line { top: 38px; }
+.wg-rank-title:nth-of-type(5) .wg-horizontal-line { top: 38px; }
+
+/* Main content - RESTORED original positioning */
+.wg-main-title {
+  width: 1067px;
+  height: 99px;
+  position: absolute;
+  left: 651px;
+  top: 183px;
+  font-family: 'Inter', sans-serif;
+  font-size: 64px;
+  font-weight: 600;
+  color: white;
+}
+
+.wg-vertical-line {
+  width: 864.02px;
+  height: 0;
+  position: absolute;
+  left: 586.97px;
+  top: 191.99px;
+  transform: rotate(90deg);
+  transform-origin: top left;
+  border: 4px solid #82bcea;
+}
+
+.wg-subtitle {
+  width: 1111px;
+  position: absolute;
+  left: 653px;
+  top: 296px;
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: white;
+}
+
+.wg-content-area {
+  width: 60vw;
+  max-width: 1200px;
+  position: absolute;
+  left: 658px;
+  top: 259px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+/* Content styles - RESTORED original styling */
+.wg-section-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.wg-section-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.wg-strategies-container {
+  margin-bottom: 24px;
+}
+
+.wg-strategy-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: white;
+}
+
+.wg-rank-hero-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: white;
+}
+
+.wg-feature-list {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: white;
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.wg-feature-item {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.wg-feature-item::before {
+  content: "•";
+  color: #c9ac67;
+  position: absolute;
+  left: -20px;
+}
+
