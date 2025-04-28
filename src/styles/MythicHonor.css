@@ -74,24 +74,31 @@
 }
 
 .mh-rank-title-active {
-  top: 469px;
-  cursor: default;
-}
-
-.mh-rank-title-inactive {
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.mh-rank-title-inactive:hover {
-  opacity: 0.8;
-}
-
-.mh-rank-title:nth-of-type(1) { top: 137px; }
-.mh-rank-title:nth-of-type(2) { top: 301px; }
-.mh-rank-title:nth-of-type(3) { top: 469px; }
-.mh-rank-title:nth-of-type(4) { top: 637px; }
-.mh-rank-title:nth-of-type(5) { top: 805px; }
+    top: 637px;
+    cursor: default;
+  }
+  
+  .mh-rank-title-inactive {
+    top: 137px;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  
+  .mh-rank-title-inactive:hover {
+    opacity: 0.8;
+  }
+  
+  .mh-rank-title:nth-of-type(2) {
+    top: 301px;
+  }
+  
+  .mh-rank-title:nth-of-type(3) {
+    top: 469px;
+  }
+  
+  .mh-rank-title:nth-of-type(4) {
+    top: 805px;
+  }
 
 /* Rank icons */
 .mh-rank-icon {
@@ -283,7 +290,7 @@
 
 .mh-content-area {
   width: 1277px;
-  height: 543px;
+  height: 643px;
   position: absolute;
   left: 658px;
   top: 409px;

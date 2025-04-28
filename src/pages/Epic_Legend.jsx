@@ -87,74 +87,74 @@ const EpicLegend = () => {
       />
 
       {/* Sidebar Navigation */}
-      <div className="wg-rank-sidebar">
-        <Link to="/warrior-gm" className="wg-rank-title wg-rank-title-inactive">
+      <div className="el-rank-sidebar">
+        <Link to="/warrior-gm" className="el-rank-title el-rank-title-inactive">
           WARRIOR - GRANDMASTER
-          <div className="wg-horizontal-line"></div>
+          <div className="el-horizontal-line"></div>
         </Link>
-        <div className="wg-rank-title wg-rank-title-active">
+        <div className="el-rank-title el-rank-title-active">
           EPIC - LEGEND
-          <div className="wg-horizontal-line"></div>
+          <div className="el-horizontal-line"></div>
         </div>
-        <Link to="/mythic" className="wg-rank-title wg-rank-title-inactive">
+        <Link to="/mythic" className="el-rank-title el-rank-title-inactive">
           MYTHIC
-          <div className="wg-horizontal-line"></div>
+          <div className="el-horizontal-line"></div>
         </Link>
-        <Link to="/mythical-honor" className="wg-rank-title wg-rank-title-inactive">
+        <Link to="/mythical-honor" className="el-rank-title el-rank-title-inactive">
           MYTHICAL HONOR
-          <div className="wg-horizontal-line"></div>
+          <div className="el-horizontal-line"></div>
         </Link>
-        <Link to="/mythical-glory" className="wg-rank-title wg-rank-title-inactive">
+        <Link to="/mythical-glory" className="el-rank-title el-rank-title-inactive">
           MYTHICAL GLORY
-          <div className="wg-horizontal-line"></div>
+          <div className="el-horizontal-line"></div>
         </Link>
 
         {/* Rank Icons */}
         <Link to="/warrior-gm">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-warrior-icon"
+            className="el-rank-icon el-rank-icon-inactive el-warrior-icon"
             src="Warrior.png"
             alt="Warrior rank icon"
           />
         </Link>
         <Link to="/warrior-gm">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-grandmaster-icon"
+            className="el-rank-icon el-rank-icon-inactive el-grandmaster-icon"
             src="Grandmastur.png"
             alt="Grandmaster rank icon"
           />
         </Link>
-        <div className="wg-rank-separator wg-rank-separator-inactive">-</div>
+        <div className="el-rank-separator el-rank-separator-inactive">-</div>
 
         <img 
-          className="wg-rank-icon wg-rank-icon-active wg-epic-icon"
+          className="el-rank-icon el-rank-icon-active el-epic-icon"
           src="Epic.png"
           alt="Epic rank icon"
         />
         <img 
-          className="wg-rank-icon wg-rank-icon-active wg-legend-icon"
+          className="el-rank-icon el-rank-icon-active el-legend-icon"
           src="Legend.png"
           alt="Legend rank icon"
         />
-        <div className="wg-rank-separator wg-rank-separator-inactive">-</div>
+        <div className="el-rank-separator el-rank-separator-inactive">-</div>
 
         <Link to="/mythic">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-mythic-icon"
+            className="el-rank-icon el-rank-icon-inactive el-mythic-icon"
             src="Mythic.png"
             alt="Mythic rank icon"
           />
         </Link>
         <Link to="/mythical-honor">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-mythical-honor-icon"
+            className="el-rank-icon el-rank-icon-inactive el-mythical-honor-icon"
             src="MythicHonor.png"
             alt="Mythical Honor rank icon"
           />
         </Link>
         <Link to="/mythical-glory">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-mythical-glory-icon"
+            className="el-rank-icon el-rank-icon-inactive el-mythical-glory-icon"
             src="MythicGlory.png"
             alt="Mythical Glory rank icon"
           />

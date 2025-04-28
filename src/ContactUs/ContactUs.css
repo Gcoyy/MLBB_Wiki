@@ -1,0 +1,80 @@
+.ContactUs {
+    position: relative;
+    padding-top: 15vh;
+    background-image: url("Background.png");
+    background-size: cover;
+    min-height: 100vh;
+    width: 100vw; 
+    background-repeat: no-repeat;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
+  
+
+  .cu-horizontal-line {
+    width: min(86vw, 1500px);
+    height: 0;
+    border: 4px solid #82bcea;
+    text-align: center;
+  }
+  
+  .contact-us-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 2rem;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  /* Keep your existing .ContactUs, .contact-us-container styles */
+
+.contact-method {
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .icon-and-heading {
+    display: flex;
+    align-items: flex-start; /* Aligns icon with first line of text */
+    gap: 5rem;
+  }
+  
+  .contact-icon {
+    width: 30px; /* Adjust icon size */
+    height: 30px;
+    margin-top: 0.3rem; /* Fine-tune vertical alignment */
+  }
+  
+  .contact-method h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+  
+  .contact-method p {
+    margin: 0.1rem 0 0 0.1rem; /* 30px icon + 1rem gap = ~2.8rem indent */
+    font-style: italic;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .icon-and-heading {
+      gap: 0.8rem;
+    }
+    .contact-method p {
+      margin-left: 0; /* Remove indent on mobile */
+    }
+  }

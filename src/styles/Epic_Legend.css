@@ -51,25 +51,31 @@
 }
 
 .el-rank-title-active {
-  top: 301px;
-  cursor: default;
-}
-
-.el-rank-title-inactive {
-  top: 301;
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.el-rank-title-inactive:hover {
-  opacity: 0.8;
-}
-
-.el-rank-title:nth-of-type(1) { top: 137px; } /* WARRIOR-GM */
-.el-rank-title:nth-of-type(2) { top: 301px; } /* EPIC-LEGEND */
-.el-rank-title:nth-of-type(3) { top: 469px; } /* MYTHIC */
-.el-rank-title:nth-of-type(4) { top: 637px; } /* MYTHICAL HONOR */
-.el-rank-title:nth-of-type(5) { top: 805px; } /* MYTHICAL GLORY */
+    top: 301px;
+    cursor: default;
+  }
+  
+  .el-rank-title-inactive {
+    top: 137px;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  
+  .el-rank-title-inactive:hover {
+    opacity: 0.8;
+  }
+  
+  .el-rank-title:nth-of-type(2) {
+    top: 469px;
+  }
+  
+  .el-rank-title:nth-of-type(3) {
+    top: 637px;
+  }
+  
+  .el-rank-title:nth-of-type(4) {
+    top: 805px;
+  }
 
 /* Rank icons */
 .el-rank-icon {
@@ -262,7 +268,7 @@
 
 .el-content-area {
   width: 1277px;
-  height: 543px;
+  height: 643px;
   position: absolute;
   left: 658px;
   top: 409px;

@@ -5,7 +5,6 @@ import Header from "../Header/Header.jsx";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
-// Reusable components
 const RankHero = ({ role, heroes }) => (
   <div>
     <span className="mg-rank-hero-text">
@@ -87,77 +86,77 @@ const MythicalGlory = () => {
       />
 
       {/* Sidebar Navigation */}
-      <div className="wg-rank-sidebar">
-        <Link to="/warrior-gm" className="wg-rank-title wg-rank-title-inactive">
+      <div className="mg-rank-sidebar">
+        <Link to="/warrior-gm" className="mg-rank-title mg-rank-title-inactive">
           WARRIOR - GRANDMASTER
-          <div className="wg-horizontal-line"></div>
+          <div className="mg-horizontal-line"></div>
         </Link>
-        <Link to="/epic-legend" className="wg-rank-title wg-rank-title-inactive">
+        <Link to="/epic-legend" className="mg-rank-title mg-rank-title-inactive">
           EPIC - LEGEND
-          <div className="wg-horizontal-line"></div>
+          <div className="mg-horizontal-line"></div>
         </Link>
-        <Link to="/mythic" className="wg-rank-title wg-rank-title-inactive">
+        <Link to="/mythic" className="mg-rank-title mg-rank-title-inactive">
           MYTHIC
-          <div className="wg-horizontal-line"></div>
+          <div className="mg-horizontal-line"></div>
         </Link>
-        <Link to="/mythical-honor" className="wg-rank-title wg-rank-title-inactive">
+        <Link to="/mythical-honor" className="mg-rank-title mg-rank-title-inactive">
           MYTHICAL HONOR
-          <div className="wg-horizontal-line"></div>
+          <div className="mg-horizontal-line"></div>
         </Link>
-        <div className="wg-rank-title wg-rank-title-active">
+        <div className="mg-rank-title mg-rank-title-active">
           MYTHICAL GLORY
-          <div className="wg-horizontal-line"></div>
+          <div className="mg-horizontal-line"></div>
         </div>
 
         {/* Rank Icons */}
         <Link to="/warrior-gm">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-warrior-icon"
+            className="mg-rank-icon mg-rank-icon-inactive mg-warrior-icon"
             src="Warrior.png"
             alt="Warrior rank icon"
           />
         </Link>
         <Link to="/warrior-gm">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-grandmaster-icon"
+            className="mg-rank-icon mg-rank-icon-inactive mg-grandmaster-icon"
             src="Grandmastur.png"
             alt="Grandmaster rank icon"
           />
         </Link>
-        <div className="wg-rank-separator wg-rank-separator-inactive">-</div>
+        <div className="mg-rank-separator mg-rank-separator-inactive">-</div>
 
         <Link to="/epic-legend">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-epic-icon"
+            className="mg-rank-icon mg-rank-icon-inactive mg-epic-icon"
             src="Epic.png"
             alt="Epic rank icon"
           />
         </Link>
         <Link to="/epic-legend">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-legend-icon"
+            className="mg-rank-icon mg-rank-icon-inactive mg-legend-icon"
             src="Legend.png"
             alt="Legend rank icon"
           />
         </Link>
-        <div className="wg-rank-separator wg-rank-separator-inactive">-</div>
+        <div className="mg-rank-separator mg-rank-separator-inactive">-</div>
 
         <Link to="/mythic">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-mythic-icon"
+            className="mg-rank-icon mg-rank-icon-inactive mg-mythic-icon"
             src="Mythic.png"
             alt="Mythic rank icon"
           />
         </Link>
         <Link to="/mythical-honor">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-mythical-honor-icon"
+            className="mg-rank-icon mg-rank-icon-inactive mg-mythical-honor-icon"
             src="MythicHonor.png"
             alt="Mythical Honor rank icon"
           />
         </Link>
         <img 
-          className="wg-rank-icon wg-rank-icon-active wg-mythical-glory-icon"
+          className="mg-rank-icon mg-rank-icon-active mg-mythical-glory-icon"
           src="MythicGlory.png"
           alt="Mythical Glory rank icon"
         />

@@ -87,76 +87,76 @@ const MythicHonor = () => {
       />
 
       {/* Sidebar Navigation */}
-      <div className="wg-rank-sidebar">
-        <Link to="/warrior-gm" className="wg-rank-title wg-rank-title-inactive">
+      <div className="mh-rank-sidebar">
+        <Link to="/warrior-gm" className="mh-rank-title mh-rank-title-inactive">
           WARRIOR - GRANDMASTER
-          <div className="wg-horizontal-line"></div>
+          <div className="mh-horizontal-line"></div>
         </Link>
-        <Link to="/epic-legend" className="wg-rank-title wg-rank-title-inactive">
+        <Link to="/epic-legend" className="mh-rank-title mh-rank-title-inactive">
           EPIC - LEGEND
-          <div className="wg-horizontal-line"></div>
+          <div className="mh-horizontal-line"></div>
         </Link>
-        <Link to="/mythic" className="wg-rank-title wg-rank-title-inactive">
+        <Link to="/mythic" className="mh-rank-title mh-rank-title-inactive">
           MYTHIC
-          <div className="wg-horizontal-line"></div>
+          <div className="mh-horizontal-line"></div>
         </Link>
-        <div className="wg-rank-title wg-rank-title-active">
+        <div className="mh-rank-title mh-rank-title-active">
           MYTHICAL HONOR
-          <div className="wg-horizontal-line"></div>
+          <div className="mh-horizontal-line"></div>
         </div>
-        <Link to="/mythical-glory" className="wg-rank-title wg-rank-title-inactive">
+        <Link to="/mythical-glory" className="mh-rank-title mh-rank-title-inactive">
           MYTHICAL GLORY
-          <div className="wg-horizontal-line"></div>
+          <div className="mh-horizontal-line"></div>
         </Link>
 
         {/* Rank Icons */}
         <Link to="/warrior-gm">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-warrior-icon"
+            className="mh-rank-icon mh-rank-icon-inactive mh-warrior-icon"
             src="Warrior.png"
             alt="Warrior rank icon"
           />
         </Link>
         <Link to="/warrior-gm">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-grandmaster-icon"
+            className="mh-rank-icon mh-rank-icon-inactive mh-grandmaster-icon"
             src="Grandmastur.png"
             alt="Grandmaster rank icon"
           />
         </Link>
-        <div className="wg-rank-separator wg-rank-separator-inactive">-</div>
+        <div className="mh-rank-separator mh-rank-separator-inactive">-</div>
 
         <Link to="/epic-legend">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-epic-icon"
+            className="mh-rank-icon mh-rank-icon-inactive mh-epic-icon"
             src="Epic.png"
             alt="Epic rank icon"
           />
         </Link>
         <Link to="/epic-legend">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-legend-icon"
+            className="mh-rank-icon mh-rank-icon-inactive mh-legend-icon"
             src="Legend.png"
             alt="Legend rank icon"
           />
         </Link>
-        <div className="wg-rank-separator wg-rank-separator-inactive">-</div>
+        <div className="mh-rank-separator mh-rank-separator-inactive">-</div>
 
         <Link to="/mythic">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-mythic-icon"
+            className="mh-rank-icon mh-rank-icon-inactive mh-mythic-icon"
             src="Mythic.png"
             alt="Mythic rank icon"
           />
         </Link>
         <img 
-          className="wg-rank-icon wg-rank-icon-active wg-mythical-honor-icon"
+          className="mh-rank-icon mh-rank-icon-active mh-mythical-honor-icon"
           src="MythicHonor.png"
           alt="Mythical Honor rank icon"
         />
         <Link to="/mythical-glory">
           <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-mythical-glory-icon"
+            className="mh-rank-icon mh-rank-icon-inactive mh-mythical-glory-icon"
             src="MythicGlory.png"
             alt="Mythical Glory rank icon"
           />

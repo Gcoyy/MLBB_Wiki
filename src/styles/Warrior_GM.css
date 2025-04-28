@@ -204,14 +204,14 @@
 }
 
 .wg-content-area {
-  width: 60vw;
-  max-width: 1200px;
-  position: absolute;
-  left: 658px;
-  top: 259px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
+    width: 1277px;
+    height: 643px;
+    position: absolute;
+    left: 658px;
+    top: 409px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
 }
 
 /* Content styles - RESTORED original styling */
