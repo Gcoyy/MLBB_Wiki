@@ -1,6 +1,7 @@
 import './Lane.css'
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 const lanes = [
     {
@@ -71,6 +72,7 @@ function Lane() {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const word = queryParams.get('word');
+    const navigate = useNavigate();
 
     const next = () => {
       setIndex((index + 1) % selectedLane.heroes.length);
@@ -86,7 +88,13 @@ function Lane() {
 
     return (
         <div className='Lane'>
-           <div className='breadcrumb'> {word} <span>/</span> {selectedLane.name}</div>
+           <div className='breadcrumb'>
+              <span className="breadcrumb-link" onClick={() => navigate(-1)} style={{ cursor: "pointer" }}>
+                {word}
+              </span>
+              <span> / </span> 
+              <span className='breadcrumb-link'>{selectedLane.name}</span>
+            </div>
             <div className="container">
             {/* Sidebar */}
             <div className="sidebar">
@@ -102,8 +110,9 @@ function Lane() {
                         className="icon-sm"
                         style={{ opacity: selectedLane.id === lane.id ? 1 : 0.25 }}
                     />
-
-                    <span className="lane-name">{lane.name}</span>
+                    {selectedLane.id === lane.id && (
+                      <span className="lane-name">{lane.name}</span>
+                    )}
                 </button>
                 ))}
             </div>
@@ -112,15 +121,15 @@ function Lane() {
             <div className="main">
                 <div className="lane-content-left">
                   <img src={selectedLane.icon} alt={selectedLane.name} className="icon" />
-                  <div className='line'/>
+                  <div className='line1'/>
                   <h1 className='lane-title'>{selectedLane.name.toUpperCase()}</h1>
-                  <div className='line'/>
+                  <div className='line2'/>
                 </div>
                 <div className='lane-content-right'>
                   <div className="heroes" style={{ transform: `translateX(-${index * 10}%)` }}>
-                    {selectedLane.heroes.map((hero, index) => (
-                      <div className="hero-card" key={index}>
-                        <img src={hero} alt={`Hero ${index + 1}`} />
+                    {selectedLane.heroes.map((hero) => (
+                      <div className="hero-card" key={hero}>
+                        <img src={hero} alt={`Hero ${hero + 1}`} />
                       </div>
                     ))}
                   </div>
