@@ -1,27 +1,16 @@
-/* .SiteMap {
-    padding-top: 15vh;
-    background-image: url("Logo.png"), url("Background.png");
-    background-size: 200px, cover;
-    background-repeat: no-repeat, no-repeat;
-    background-position: center, center;
-    height: 100vh;
-} */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-/* body {
-  font-family: 'Inter', sans-serif;
-} */
-
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'); */
 
 .SiteMap {
     position: relative;
     padding-top: 15vh;
     background-image: url("Background.png");
     background-size: cover;
+    background-position: center;
     height: 100vh;
     background-repeat: no-repeat;
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
 .SiteMap::after {
@@ -33,52 +22,86 @@
     width: 100%;
     background-image: url("Logo.png");
     background-repeat: no-repeat;
-    background-size: 70%; /* adjust logo size */
+    background-size: 70%;
     background-position: center;
-    opacity: 0.3; /* 🔥 controls transparency */
-    pointer-events: none; /* lets clicks pass through */
+    opacity: 0.3;
+    pointer-events: none;
 }
 
-
 .sitemap-title {
-    padding: 50px 0px;
+    padding: 5vh 0;
     text-align: center;
     color: white;
+    font-size: clamp(1.5rem, 2.5vw, 3rem);
 }
 
 .sitemap-container {
     display: flex;
     justify-content: space-around;
-    /* align-items: center; */
-    height: 60vh;
+    align-items: center;
+    height: auto;
+    gap: 5vw;
+    padding: 2vh 5vw;
+    flex-wrap: wrap;
 }
 
-.sitemap-container-left {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-}
-
+.sitemap-container-left,
 .sitemap-container-right {
     display: flex;
-    justify-content: space-around;
     flex-direction: column;
+    gap: 2vh;
 }
 
 .sitemap-vertical-line {
     border-left: 2px solid white;
-    height: 60vh;
+    height: auto;
+    min-height: 40vh;
 }
 
 .sitemap-container-item {
     color: white;
     cursor: pointer;
     text-decoration: none;
-    font-size: clamp(1rem, 1.5vw, 2.5rem);
+    font-size: clamp(1rem, 1.5vw, 2rem);
     font-weight: 700;
+    transition: color 0.3s ease;
 }
 
 .sitemap-container-item:hover {
-    color: blue;
+    color: #00bfff;
     text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+    .sitemap-container {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        gap: 20px;
+    }
+
+    .sitemap-container-left,
+    .sitemap-container-right {
+        align-items: center;
+    }
+
+    .sitemap-vertical-line {
+        display: none;
+    }
+
+    .sitemap-container-item {
+        font-size: 1.2rem;
+    }
+
+    .SiteMap {
+        padding: 10vh 20px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .sitemap-title {
+        font-size: 1.5rem;
+        padding: 20px 0;
+    }
 }
