@@ -1,5 +1,5 @@
 .Lane {
-    background-image: url("Background.png");
+    background-image: url("/public/Background.png");
     padding-top: 15vh;
     height: 100vh;
 }

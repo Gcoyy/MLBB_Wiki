@@ -4,7 +4,7 @@
 .SiteMap {
     position: relative;
     padding-top: 15vh;
-    background-image: url("Background.png");
+    background-image: url("/public/Background.png");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -20,7 +20,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-image: url("Logo.png");
+    background-image: url("/public/Logo.png");
     background-repeat: no-repeat;
     background-size: 70%;
     background-position: center;
