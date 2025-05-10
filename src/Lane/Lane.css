@@ -7,7 +7,7 @@
 /* Container Layout */
 .container {
   display: flex;
-  height: 100%;
+  height: 90vh;
   color: white;
 }
 
@@ -100,7 +100,6 @@
 
 .heroes {
   height: 70%;
-  ;
   width: 100rem;
   display: flex;
   align-items: center;
@@ -114,8 +113,8 @@
 
 .hero-card {
   position: relative;
-  width: 200px;
-  height: 27rem;
+  width: clamp(100px, 15vw, 200px);
+  height: auto;
   overflow: hidden;
   transition: width 0.3s ease, transform 0.3s ease;
 }
@@ -162,7 +161,7 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 0px 5rem;
+  padding: 1.5rem 5rem;
 }
 
 .carousel-btn-prev {
@@ -223,25 +222,36 @@
 
 @media (max-width: 768px) {
   .Lane {
-    background-image: url("/public/Background.png");
+    background-image: url("/public/Background2.png");
     background-size: cover;
-    padding-top: 10vh;
+    /* padding-top: 10vh; */
+    height: 100vh;
   }
 
   .container {
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    height: 90vh;
   }
 
   .sidebar {
     order: 2;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
     width: 100%;
-    padding: 1rem 0;
+    /* padding: 1rem 0; */
+    box-sizing: border-box;
+    /* max-width: 80vw; */
     gap: 1rem;
+  }
+
+  .sidebar img {
+    width: clamp(1px, 100vh, 70px);
+    height: auto;
+  /* min 40px, scales with height, max 100px */
   }
 
   .sidebar button {
@@ -259,7 +269,7 @@
     order: 1;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 90vw;
     padding: 1rem;
   }
 
@@ -290,29 +300,32 @@
     width: 100%;
     padding: 0 1rem;
     position: relative;
+    max-height: max-content;
   }
 
   .heroes {
-    justify-content: center;
+    /* justify-content: center; */
     padding-left: 0;
-    gap: 0;
+    gap: 10px;
     overflow: hidden;
     transform: none !important;
   }
 
   .hero-card {
-    width: 100%;
+    /* width: clamp(100px, 12vh, 200px); */
+    width: auto;
     height: auto;
-    max-height: 24rem;
+    /* max-height: 24rem; */
   }
 
   .hero-card img {
-    width: 100%;
+    width: clamp(100px, 60vw, 200px);
     height: auto;
     object-fit: contain;
   }
 
   .carousel-btn-container {
+    margin-top: 10%;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 1rem;

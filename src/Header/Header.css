@@ -1,129 +1,119 @@
 .header {
-    background: rgba(0, 0, 0, 0.25);
-    height: 15vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: #C9AC67;
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    width: 100%;
-    position: absolute;
-    z-index: 1000;
+  background: rgba(0, 0, 0, 0.25);
+  height: 15vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #C9AC67;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  padding: 0 2rem;
 }
 
 .logo {
-    /* border: 2px solid black; */
-    height: clamp(20px, 12vh, 200px); /* min 40px, scales with height, max 100px */
-    width: auto;                     /* preserves aspect ratio */
-    max-width: 80vw; 
+  height: clamp(20px, 12vh, 200px);
+  /* min 40px, scales with height, max 100px */
+  width: auto;
+  max-width: 80vw;
+  object-fit: contain;
 }
 
 .menu {
-    display: flex;
-    justify-content: space-around;
-    width: 55vw;
-    cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  width: 55vw;
+  cursor: pointer;
+  gap: 1rem;
 }
 
 .menu a {
-    text-decoration: none;
-    color: #C9AC67;
-    font-size: clamp(1rem, 1.5vw, 2.5rem);
-    font-weight: 500;
-
+  text-decoration: none;
+  color: #C9AC67;
+  font-size: clamp(1rem, 1.5vw, 2.5rem);
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .menu a.active {
-    color: #FFE198;
-    text-decoration: underline;
+  color: #FFE198;
+  text-decoration: underline;
 }
 
 .settings {
-    /* display: flex;
-    align-items: center;
-    height: 7vh;
-    border: 2px solid #C9AC67;
-    justify-content: space-around;
-    width: 16vw;
-    font-size: 24px;
-    font-weight: 600; */
-    width: 16vw;
+  width: 16vw;
+  min-width: 100px;
 }
-/*
-.settings_icon {
-    height: 80%;
-}
-
-.settings p {
-    cursor: pointer;
-    font-size: clamp(1rem, 2vw, 2.5rem);
-}
-
-.triangle {
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid #C9AC67;
-    border-bottom: none;
-} */
 
 @media (max-width: 768px) {
-    .header {
-      flex-direction: row;
-      height: auto;
-      padding: 0px 20px;
-      justify-content: space-between;
-      position: absolute;
-      background: rgba(0, 0, 0, 0.25);
-    }
-  
-    .logo {
-      height: 6vh;
-      /* margin-left: 10px; */
-    }
-  
-    .menu {
-      flex-direction: column;
-      width: 100%;
-      display: none; /* Hidden by default on mobile */
-      background: rgba(0, 0, 0, 0.85);
-      position: absolute;
-      top: 100%;
-      left: 0;
-      padding: 10px 20px;
-    }
-  
-    .menu a {
-      font-size: 1.2rem;
-      padding: 10px 0;
-      width: 100%;
-    }
-  
-    .menu.active {
-      display: flex;
-    }
-  
-    .hamburger {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      height: 24px;
-      width: 30px;
-      margin: 10px;
-      cursor: pointer;
-      /* margin-left: 20px; */
-    }
-  
-    .hamburger span {
-      height: 3px;
-      width: 100%;
-      background: #C9AC67;
-      border-radius: 2px;
-    }
-  
-    .settings {
-      /* display: none; */
-      /* width: 16vw; */
-      width: 13vw;
-    }
+  .header {
+    flex-direction: row;
+    height: auto;
+    /* padding: 0px 20px; */
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 0.5rem 1rem;
   }
+
+  .logo {
+    height: 6vh;
+    /* margin-left: 10px; */
+  }
+
+  .menu {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    /* Hidden by default on mobile */
+    background: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+
+  .menu a {
+    font-size: 1.2rem;
+    padding: 10px 0;
+    width: 100%;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 24px;
+    width: 30px;
+    margin: 10px;
+    cursor: pointer;
+    /* margin-left: 20px; */
+  }
+
+  .hamburger span {
+    height: 3px;
+    width: 100%;
+    background: #C9AC67;
+    border-radius: 2px;
+  }
+
+  .settings {
+    /* display: none; */
+    /* width: 16vw; */
+    /* width: 20%; */
+    /* min-width: 60px; */
+  }
+}
