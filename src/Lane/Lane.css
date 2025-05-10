@@ -1,59 +1,59 @@
 .Lane {
-    background-image: url("/public/Background.png");
-    padding-top: 15vh;
-    height: 100vh;
+  background-image: url("/public/Background.png");
+  padding-top: 15vh;
+  height: 100vh;
 }
 
 /* Container Layout */
 .container {
-    display: flex;
-    height: 100%;
-    color: white;
-  }
-  
-  /* Sidebar */
-  .sidebar {
-    width: 20rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem 0;
-    gap: 2rem;
-  }
-  
-  .sidebar button {
-    width: 5rem;
-    height: 5rem;
-    /* border-radius: 0.375rem; */
-    /* display: flex; */
-    align-items: center;
-    justify-content: center;
-    /* background-color: #1e3a8a; */
-    transition: background-color 0.2s;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .sidebar img {
-    width: 5rem;
-    height: 5rem;
-    transition: opacity 0.3s ease;
-  }
+  display: flex;
+  height: 100%;
+  color: white;
+}
 
-  .lane-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .lane-name {
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
-    color: white;
-    text-align: center;
-  }
-  
+/* Sidebar */
+.sidebar {
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0;
+  gap: 2rem;
+}
+
+.sidebar button {
+  width: 5rem;
+  height: 5rem;
+  /* border-radius: 0.375rem; */
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  /* background-color: #1e3a8a; */
+  transition: background-color 0.2s;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar img {
+  width: 5rem;
+  height: 5rem;
+  transition: opacity 0.3s ease;
+}
+
+.lane-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lane-name {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  color: white;
+  text-align: center;
+}
+
 .line1 {
   background-color: white;
   height: 2px;
@@ -79,7 +79,7 @@
   /* justify-content:space-evenly; */
   /* border: 2px solid white; */
   width: 80rem;
-  
+
 }
 
 .lane-content-left {
@@ -99,7 +99,8 @@
 }
 
 .heroes {
-  height: 70%;;
+  height: 70%;
+  ;
   width: 100rem;
   display: flex;
   align-items: center;
@@ -113,15 +114,17 @@
 
 .hero-card {
   position: relative;
-  width: 200px; 
+  width: 200px;
   height: 27rem;
   overflow: hidden;
   transition: width 0.3s ease, transform 0.3s ease;
 }
 
 .hero-card:hover {
-  width: 220px; /* slightly wider on hover */
-  transform: scale(1.05); /* optional: add a smooth zoom effect */
+  width: 220px;
+  /* slightly wider on hover */
+  transform: scale(1.05);
+  /* optional: add a smooth zoom effect */
 }
 
 .hero-card img {
@@ -133,13 +136,17 @@
 }
 
 .hero-card:hover img {
-  transform: scale(1.05); /* zoom the image a bit */
+  transform: scale(1.05);
+  /* zoom the image a bit */
 }
 
 .hero-card::after {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid #C9AC67;
   z-index: 1;
@@ -147,7 +154,8 @@
 }
 
 .hero-card:hover::after {
-  background-color: rgba(0, 0, 0, 0.2); /* lighten overlay on hover */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* lighten overlay on hover */
 }
 
 .carousel-btn-container {
@@ -170,7 +178,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 0.5rem; /* Adjust how far from the left edge */
+  padding-left: 0.5rem;
+  /* Adjust how far from the left edge */
 }
 
 .carousel-btn-next {
@@ -186,7 +195,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 0.5rem; 
+  padding-right: 0.5rem;
 }
 
 .breadcrumb {
@@ -242,7 +251,8 @@
   }
 
   .lane-name {
-    display: none; /* hide text under icons to save space */
+    display: none;
+    /* hide text under icons to save space */
   }
 
   .main {
@@ -257,7 +267,7 @@
     width: 100%;
     padding: 1rem;
   }
-  
+
 
   .lane-content-left img {
     width: 3rem;
