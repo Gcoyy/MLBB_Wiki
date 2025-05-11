@@ -1,7 +1,7 @@
 .Lane {
   /* background-image: url("/public/Background.png"); */
-  padding-top: 12vh;
-  height: 100vh;
+  padding-top: 15vh;
+  height: auto;
 }
 
 /* Container Layout */
@@ -218,11 +218,10 @@
 
 
 @media (max-width: 768px) {
-  /* .Lane {
-    background-image: url("/public/Background2.png");
-    background-size: cover;
-    height: 100vh;
-  } */
+  .Lane {
+    padding-top: 12vh;
+    height: auto;
+  }
 
   .container {
     flex-direction: column;

@@ -9,12 +9,12 @@
   font-weight: bold;
   width: 100%;
   position: absolute;
-  top: 0;
+  /* top: 0;
   left: 0;
-  right: 0;
+  right: 0; */
   z-index: 1000;
-  box-sizing: border-box;
-  padding: 0 2rem;
+  /* box-sizing: border-box;
+  padding: 0 2rem; */
 }
 
 .logo {
@@ -60,7 +60,8 @@
     position: absolute;
     width: 100%;
     background: rgba(0, 0, 0, 0.25);
-    padding: 0.5rem 1rem;
+    padding: 0.5vh 5vw;
+    box-sizing: border-box;
   }
 
   .logo {
@@ -73,7 +74,7 @@
     width: 100%;
     display: none;
     /* Hidden by default on mobile */
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 1);
     position: absolute;
     top: 100%;
     left: 0;
@@ -124,6 +125,6 @@
     /* width: 16vw; */
     /* width: 20%; */
     /* min-width: 60px; */
-    width: 15vw;
+    width: 10vw;
   }
 }

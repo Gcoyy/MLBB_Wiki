@@ -7,9 +7,10 @@
 
 body {
     background-image: url("/public/Background.png");
-    background-size: cover;         /* Ensures it covers the full area */
-    background-position: center;    /* Keeps image centered */
-    background-repeat: no-repeat;   /* Avoids tiling */
-    background-attachment: fixed;   /* Optional: keeps background still when scrolling */
-    min-height: 100vh;
+    background-size: cover;         
+    background-position: center;   
+    background-repeat: no-repeat;   
+    background-attachment: fixed;   
+    /* height: 100vh;
+    width: 100vw; */
 }

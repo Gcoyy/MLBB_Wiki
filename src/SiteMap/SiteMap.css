@@ -4,13 +4,14 @@
 .SiteMap {
     position: relative;
     padding-top: 15vh;
-    background-image: url("/public/Background.png");
+    /* background-image: url("/public/Background.png");
     background-size: cover;
     background-position: center;
     height: 100vh;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
+    height: auto;
+    /* overflow-x: hidden; */
 }
 
 .SiteMap::after {
@@ -78,7 +79,8 @@
         flex-direction: column;
         align-items: center;
         height: auto;
-        gap: 20px;
+        gap: 10px;
+        padding-top: 10vh;
     }
 
     .sitemap-container-left,
@@ -92,12 +94,13 @@
 
     .sitemap-container-item {
         font-size: 1.2rem;
+        padding: 10px 0;
     }
 
     .SiteMap {
-        padding: 10vh 20px;
-        background-size: cover;
-        background-position: center;
+        padding: 10vh 20px 0px;
+        /* background-size: cover;
+        background-position: center; */
     }
 
     .sitemap-title {
