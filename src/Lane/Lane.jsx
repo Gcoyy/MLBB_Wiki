@@ -1,70 +1,85 @@
 import './Lane.css'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
 
-const laneData = [
-  {
-    id: "exp",
-    name: "Exp Lane",
-    icon: "/Exp Lane Icon.png",
-    heroes: [
-      "/exp-hero1.png",
-      "/exp-hero2.png",
-      "/exp-hero3.png",
-      "/exp-hero4.png",
-    ],
-  },
-  {
-    id: "mid",
-    name: "Mid Lane",
-    icon: "/Mid Lane Icon.png",
-    heroes: [
-      "/mid-hero1.png",
-      "/mid-hero2.png",
-      "/mid-hero3.png",
-    ],
-  },
-  {
-    id: "gold",
-    name: "Gold Lane",
-    icon: "/Gold Lane Icon.png",
-    heroes: [
-      "/gold-hero1.png",
-      "/gold-hero2.png",
-      "/gold-hero3.png",
-      "/gold-hero4.png",
-      "/gold-hero5.png",
-      "/gold-hero6.png",
-    ],
-  },
-  {
-    id: "jungle",
-    name: "Jungle",
-    icon: "/Jungle Lane Icon.png",
-    heroes: [
-      "/jungle-hero1.png",
-      "/jungle-hero2.png",
-      "/jungle-hero3.png",
-      "/jungle-hero4.png",
-      "/jungle-hero5.png",
-      "/jungle-hero6.png",
-      "/jungle-hero7.png",
-    ],
-  },
-  {
-    id: "roam",
-    name: "Roam",
-    icon: "/Roam Lane Icon.png",
-    heroes: [
-      "/roam-hero1.png",
-      "/roam-hero2.png",
-      "/roam-hero3.png",
-    ],
-  },
-];
+// const getLaneDocuments = async () => {
+//   try {
+//     const laneCollection = collection(db, "lane");
+//     const laneSnapshot = await getDocs(laneCollection);
+//     const laneDocuments = laneSnapshot.docs.map(doc => doc.data());
+//     return laneDocuments;
+//   } catch (error) {
+//     console.error("Error fetching lane documents: ", error);
+//     return [];
+//   }
+// };
+
+// const laneData = [
+//   {
+//     id: "exp",
+//     name: "Exp Lane",
+//     icon: "/Exp Lane Icon.png",
+//     heroes: [
+//       {name: "Badang", image: "/exp-hero1.png"},
+//       {name: "Lukas", image: "/exp-hero2.png"},
+//       {name: "Khaleed", image: "/exp-hero3.png"},
+//       {name: "Freya", image: "/exp-hero4.png"}
+//     ],
+//   },
+//   {
+//     id: "mid",
+//     name: "Mid Lane",
+//     icon: "/Mid Lane Icon.png",
+//     heroes: [
+//       "/mid-hero1.png",
+//       "/mid-hero2.png",
+//       "/mid-hero3.png",
+//     ],
+//   },
+//   {
+//     id: "gold",
+//     name: "Gold Lane",
+//     icon: "/Gold Lane Icon.png",
+//     heroes: [
+//       "/gold-hero1.png",
+//       "/gold-hero2.png",
+//       "/gold-hero3.png",
+//       "/gold-hero4.png",
+//       "/gold-hero5.png",
+//       "/gold-hero6.png",
+//     ],
+//   },
+//   {
+//     id: "jungle",
+//     name: "Jungle",
+//     icon: "/Jungle Lane Icon.png",
+//     heroes: [
+//       "/jungle-hero1.png",
+//       "/jungle-hero2.png",
+//       "/jungle-hero3.png",
+//       "/jungle-hero4.png",
+//       "/jungle-hero5.png",
+//       "/jungle-hero6.png",
+//       "/jungle-hero7.png",
+//     ],
+//   },
+//   {
+//     id: "roam",
+//     name: "Roam",
+//     icon: "/Roam Lane Icon.png",
+//     heroes: [
+//       "/roam-hero1.png",
+//       "/roam-hero2.png",
+//       "/roam-hero3.png",
+//     ],
+//   },
+// ];
 
 function Lane() {
-  const [selectedLane, setSelectedLane] = useState(laneData[0]);
+  const [lanes, setLanes] = useState([]);
+  const [selectedLane, setSelectedLane] = useState();
   const [heroIndex, setHeroIndex] = useState(0);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -72,7 +87,10 @@ function Lane() {
   const navigate = useNavigate();
   const [cardsVisible, setCardsVisible] = useState(4); // default for desktop
   const offsetPercent = cardsVisible === 2 ? 47 : cardsVisible > 2 ? 12.5 : 0;
-  const maxIndex = Math.max(0, selectedLane.heroes.length - cardsVisible);
+  const maxIndex = useMemo(() => {
+  if (!selectedLane) return 0;
+  return Math.max(0, selectedLane.heroes.length - cardsVisible);
+}, [selectedLane, cardsVisible]);
 
 
   useEffect(() => {
@@ -111,6 +129,20 @@ useEffect(() => {
   return () => window.removeEventListener("resize", handleResize);
 }, []);
 
+useEffect(() => {
+  const fetchLaneData = async () => {
+    const snapshot = await getDocs(collection(db, "lanes"));
+    const laneDocs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    setLanes(laneDocs);
+    if (laneDocs.length > 0) {
+      setSelectedLane(laneDocs[0]);
+    }
+  };
+
+  fetchLaneData();
+}, []);
+
+if (!selectedLane) return <div>Loading...</div>;
 
   return (
     <div className="Lane">
@@ -124,7 +156,7 @@ useEffect(() => {
       <div className="container">
         {/* Sidebar */}
         <div className="sidebar">
-          {laneData.map((lane) => (
+          {lanes.map((lane) => (
             <button
               key={lane.id}
               onClick={() => handleLaneChange(lane)}
@@ -154,8 +186,9 @@ useEffect(() => {
           <div className="lane-content-right">
             <div className="heroes"  style={{ transform: `translateX(-${heroIndex * offsetPercent}vw)` }}>
               {selectedLane.heroes.map((hero, index) => (
-                <div className="hero-card" key={hero} onClick={() => handleHeroChange(index)}>
-                  <img src={hero} alt={`Hero ${index + 1}`} />
+                <div className="hero-card" key={hero.image} onClick={() => handleHeroChange(index)}>
+                  <img src={hero.image} alt={hero.name} />
+                  <div className="hero-label">{hero.name}</div>
                 </div>
               ))}
             </div>
@@ -174,4 +207,5 @@ useEffect(() => {
 }
 
 export default Lane;
+
 

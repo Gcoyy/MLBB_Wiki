@@ -1,17 +1,14 @@
 .Lane {
-  /* background-image: url("/public/Background.png"); */
   padding-top: 15vh;
   height: auto;
 }
 
-/* Container Layout */
 .container {
   display: flex;
   height: 90vh;
   color: white;
 }
 
-/* Sidebar */
 .sidebar {
   width: 20rem;
   display: flex;
@@ -64,8 +61,6 @@
 }
 
 .lane-title {
-  /* padding-left: 2.5rem;
-  padding-top: 40px; */
   padding-bottom: 30%;
   font-size: 3.5rem;
   font-family: 'Inter', sans-serif;
@@ -73,14 +68,11 @@
 
 .main {
   display: flex;
-  /* justify-content:space-evenly; */
-  /* border: 2px solid white; */
   width: 80rem;
 
 }
 
 .lane-content-left {
-  /* border: 2px solid white; */
   width: 35rem;
   display: flex;
   flex-direction: column;
@@ -118,9 +110,7 @@
 
 .hero-card:hover {
   width: 220px;
-  /* slightly wider on hover */
   transform: scale(1.05);
-  /* optional: add a smooth zoom effect */
 }
 
 .hero-card img {
@@ -133,7 +123,6 @@
 
 .hero-card:hover img {
   transform: scale(1.05);
-  /* zoom the image a bit */
 }
 
 .hero-card::after {
@@ -147,11 +136,33 @@
   border: 1px solid #C9AC67;
   z-index: 1;
   transition: background-color 0.3s ease;
+  height: auto;
 }
 
 .hero-card:hover::after {
   background-color: rgba(0, 0, 0, 0.2);
-  /* lighten overlay on hover */
+  border: none;
+}
+
+.hero-label {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  color: #C9AC67;
+  text-align: center;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: .3rem 0px
+}
+
+.hero-card:hover .hero-label {
+  opacity: 1;
 }
 
 .carousel-btn-container {
@@ -175,7 +186,6 @@
   align-items: center;
   justify-content: flex-start;
   padding-left: 0.5rem;
-  /* Adjust how far from the left edge */
 }
 
 .carousel-btn-next {
@@ -232,8 +242,6 @@
 
   .breadcrumb {
     font-size: 0.75rem;
-    /* padding-left: 0.5rem;
-    padding-top: 0px; */
     padding: 1vh 0px 5vh 1rem;
     gap: .5rem;
   }
@@ -242,13 +250,10 @@
     order: 2;
     display: flex;
     flex-direction: row;
-    /* justify-content: space-around; */
     align-items: center;
     align-self: flex-start;
     width: 100vw;
-    /* padding: 1rem 0; */
     box-sizing: border-box;
-    /* max-width: 80vw; */
     gap: 1rem;
     
   }
@@ -256,7 +261,6 @@
   .sidebar img {
     width: clamp(1px, 10vw, 70px);
     height: auto;
-  /* min 40px, scales with height, max 100px */
   }
 
   .sidebar button {
@@ -273,8 +277,6 @@
   }
 
   .lane-name {
-    /* display: none; */
-    /* hide text under icons to save space */
     width: auto;
     font-weight: 200;
     font-size: .8rem;
@@ -306,9 +308,7 @@
   .lane-title {
     font-size: 1.5rem;
     padding-bottom: 0rem;
-    /* align-self: left; */
     align-self: flex-start;
-    /* padding-left: 1rem; */
   }
 
   .line2 {
@@ -321,17 +321,14 @@
 
   .lane-content-right {
     width: 95vw;
-    /* padding: 0 1rem; */
     position: relative;
     max-height: max-content;
   }
 
   .heroes {
-    /* justify-content: center; */
     padding-left: 0;
     gap: 10px;
     overflow: hidden;
-    /* transform: none; */
     box-sizing: border-box;
     position: relative;
     width: 100rem;
@@ -341,9 +338,7 @@
 
   .hero-card {
     width: clamp(10px, 45vw, 1000px);
-    /* width: auto; */
     height: auto;
-    /* max-height: 24rem; */
   }
 
   .hero-card img {
@@ -365,11 +360,6 @@
   border: 1px solid #C9AC67;
   z-index: 1;
   transition: background-color 0.3s ease;
-  /* width: 50vw;
-  height: auto;
-  object-fit: cover;
-  display: block; */
-  
 }
 
   .carousel-btn-container {
@@ -378,12 +368,5 @@
     justify-content: space-between;
     padding: 0.5rem 1rem;
   }
-
-  .carousel-btn-prev,
-  .carousel-btn-next {
-    /* width: 2rem;
-    height: 2rem;
-    font-size: 1.2rem;
-    padding: 0; */
-  }
 }
+
