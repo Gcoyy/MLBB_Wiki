@@ -219,7 +219,7 @@
 
 @media (max-width: 768px) {
   .Lane {
-    padding-top: 12vh;
+    padding-top: 8vh;
     height: auto;
   }
 
@@ -228,6 +228,14 @@
     align-items: center;
     justify-content: space-between;
     height: 90vh;
+  }
+
+  .breadcrumb {
+    font-size: 0.75rem;
+    /* padding-left: 0.5rem;
+    padding-top: 0px; */
+    padding: 1vh 0px 5vh 1rem;
+    gap: .5rem;
   }
 
   .sidebar {
@@ -292,7 +300,7 @@
     height: auto;
     opacity: .25;
     position: absolute;
-    top: 12vh;
+    top: 8vh;
   }
 
   .lane-title {
@@ -377,10 +385,5 @@
     height: 2rem;
     font-size: 1.2rem;
     padding: 0; */
-  }
-
-  .breadcrumb {
-    font-size: 0.75rem;
-    padding-left: 0.5rem;
   }
 }

@@ -70,27 +70,47 @@ function Lane() {
   const queryParams = new URLSearchParams(location.search);
   const word = queryParams.get('word');
   const navigate = useNavigate();
+  const [cardsVisible, setCardsVisible] = useState(4); // default for desktop
+  const offsetPercent = cardsVisible === 2 ? 47 : cardsVisible > 2 ? 12.5 : 0;
+  const maxIndex = Math.max(0, selectedLane.heroes.length - cardsVisible);
+
 
   useEffect(() => {
     setHeroIndex(0); // Reset to the first item when selectedLane changes
   }, [selectedLane]);
 
   const handleHeroChange = (index) => {
-    if (index >= 0 && index <= selectedLane.heroes.length - 3) {
-      setHeroIndex(index);
-    }
-  };
+  if (index >= 0 && index <= selectedLane.heroes.length - cardsVisible) {
+    setHeroIndex(index);
+  }
+};
 
   const handleLaneChange = (lane) => {
     setSelectedLane(lane);
   };
 
-  const maxIndex = selectedLane.heroes.length - 3;
   const handleNext = () => {
-    if (heroIndex < maxIndex) {
-      setHeroIndex(heroIndex + 1);
+  if (heroIndex < maxIndex) {
+    setHeroIndex(heroIndex + 1);
+  }
+};
+
+useEffect(() => {
+  const handleResize = () => {
+    const width = window.innerWidth;
+    if (width < 768) {
+      setCardsVisible(2); // mobile
+    } else {
+      setCardsVisible(3); // desktop
     }
   };
+
+  handleResize(); // run once on load
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
 
   return (
     <div className="Lane">
@@ -132,7 +152,7 @@ function Lane() {
             <div className="line2" />
           </div>
           <div className="lane-content-right">
-            <div className="heroes" style={{ transform: `translateX(-${heroIndex * 10}%)` }}>
+            <div className="heroes"  style={{ transform: `translateX(-${heroIndex * offsetPercent}vw)` }}>
               {selectedLane.heroes.map((hero, index) => (
                 <div className="hero-card" key={hero} onClick={() => handleHeroChange(index)}>
                   <img src={hero} alt={`Hero ${index + 1}`} />
