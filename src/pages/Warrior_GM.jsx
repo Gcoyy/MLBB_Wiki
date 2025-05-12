@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Warrior_GM.css";
 import { Link } from "react-router-dom";
-import Header from "../Header/Header.jsx";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import Header from "../Header/Header.jsx"; // Make sure this path matches your header component location
 
 // Reusable components
 const RankHero = ({ role, heroes }) => (
@@ -47,8 +47,8 @@ const WarriorGM = () => {
     fetchRankData();
   }, []);
 
-// Render loading/error states
-if (loading) {
+  // Render loading/error states
+  if (loading) {
     return (
       <div className="mh-loading-screen">
         <div className="mh-loading-spinner"></div>
@@ -75,142 +75,186 @@ if (loading) {
       </div>
     );
   }
+
   // Main render
   return (
-    <div className="wg-mobile-legends-container">
-      {/* Background image */}
-      <img 
-        className="wg-background-image" 
-        src="background.png" 
-        alt="Mobile Legends background" 
-      />
-
-      {/* Sidebar Navigation */}
-      <div className="wg-rank-sidebar">
-        <div className="wg-rank-title wg-rank-title-active">
-          WARRIOR - GRANDMASTER
-          <div className="wg-horizontal-line"></div>
-        </div>
-        <Link to="/epic-legend" className="wg-rank-title wg-rank-title-inactive">
-          EPIC - LEGEND
-          <div className="wg-horizontal-line"></div>
-        </Link>
-        <Link to="/mythic" className="wg-rank-title wg-rank-title-inactive">
-          MYTHIC
-          <div className="wg-horizontal-line"></div>
-        </Link>
-        <Link to="/mythical-honor" className="wg-rank-title wg-rank-title-inactive">
-          MYTHICAL HONOR
-          <div className="wg-horizontal-line"></div>
-        </Link>
-        <Link to="/mythical-glory" className="wg-rank-title wg-rank-title-inactive">
-          MYTHICAL GLORY
-          <div className="wg-horizontal-line"></div>
-        </Link>
-
-        {/* Rank Icons */}
-        <img 
-          className="wg-rank-icon wg-rank-icon-active wg-warrior-icon"
-          src="Warrior.png"
-          alt="Warrior rank icon"
-        />
-        <img 
-          className="wg-rank-icon wg-rank-icon-active wg-grandmaster-icon"
-          src="Grandmastur.png"
-          alt="Grandmaster rank icon"
-        />
-        <div className="wg-rank-separator wg-rank-separator-active">-</div>
-
-        <Link to="/epic-legend">
-          <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-epic-icon"
-            src="Epic.png"
-            alt="Epic rank icon"
-          />
-        </Link>
-        <Link to="/epic-legend">
-          <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-legend-icon"
-            src="Legend.png"
-            alt="Legend rank icon"
-          />
-        </Link>
-        <div className="wg-rank-separator wg-rank-separator-inactive">-</div>
-
-        <Link to="/mythic">
-          <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-mythic-icon"
-            src="Mythic.png"
-            alt="Mythic rank icon"
-          />
-        </Link>
-        <Link to="/mythical-honor">
-          <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-mythical-honor-icon"
-            src="MythicHonor.png"
-            alt="Mythical Honor rank icon"
-          />
-        </Link>
-        <Link to="/mythical-glory">
-          <img 
-            className="wg-rank-icon wg-rank-icon-inactive wg-mythical-glory-icon"
-            src="MythicGlory.png"
-            alt="Mythical Glory rank icon"
-          />
-        </Link>
-      </div>
-
+    <>
       <Header />
+      <div className="wg-mobile-legends-container">
+        {/* Background image */}
+        <img 
+          className="wg-background-image" 
+          src="background.png" 
+          alt="Mobile Legends background" 
+        />
 
-      {/* Dynamic Content Area */}
-      <div className="wg-main-title">{rankData.title}</div>
-      <div className="wg-vertical-line"></div>
-      <div className="wg-subtitle">{rankData.subtitle}</div>
+        {/* Desktop Sidebar Navigation - hidden on mobile */}
+        <div className="wg-rank-sidebar">
+  {/* Warrior - Grandmaster Group */}
+  <div className="wg-rank-group">
+    <div className="wg-rank-icons">
+      <img className="wg-rank-icon wg-rank-icon-active" src="Warrior.png" alt="Warrior rank icon" />
+      <div className="wg-rank-separator">-</div>
+      <img className="wg-rank-icon wg-rank-icon-active" src="Grandmastur.png" alt="Grandmaster rank icon" />
+    </div>
+    <div className="wg-rank-title wg-rank-title-active">
+      WARRIOR - GRANDMASTER
+      <div className="wg-horizontal-line"></div>
+    </div>
+  </div>
 
-      <div className="wg-content-container">
-        <div className="wg-content-area">
-          {/* Overview Section */}
-          <div className="wg-content-card">
-            <h2 className="wg-section-title">Overview</h2>
-            <ul className="wg-feature-list">
-              {rankData.overview.map((item, index) => (
-                <li key={`overview-${index}`} className="wg-feature-item">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+  {/* Epic - Legend Group */}
+  <div className="wg-rank-group">
+    <div className="wg-rank-icons">
+      <Link to="/epic-legend">
+        <img className="wg-rank-icon wg-rank-icon-inactive" src="Epic.png" alt="Epic rank icon" />
+      </Link>
+      <div className="wg-rank-separator">-</div>
+      <Link to="/epic-legend">
+        <img className="wg-rank-icon wg-rank-icon-inactive" src="Legend.png" alt="Legend rank icon" />
+      </Link>
+    </div>
+    <Link to="/epic-legend" className="wg-rank-title wg-rank-title-inactive">
+      EPIC - LEGEND
+      <div className="wg-horizontal-line"></div>
+    </Link>
+  </div>
 
-          {/* Strategies Section */}
-          <div className="wg-content-card">
-            <h2 className="wg-section-title">Key Strategies</h2>
-            <div className="wg-strategies-grid">
-              {rankData.strategies.map((strategy, index) => (
-                <Strategy 
-                  key={`strategy-${index}`}
-                  title={strategy.title} 
-                  description={strategy.description} 
-                />
-              ))}
+  {/* Mythic Group */}
+  <div className="wg-rank-group">
+    <div className="wg-rank-icons">
+      <Link to="/mythic">
+        <img className="wg-rank-icon wg-rank-icon-inactive" src="Mythic.png" alt="Mythic rank icon" />
+      </Link>
+    </div>
+    <Link to="/mythic" className="wg-rank-title wg-rank-title-inactive">
+      MYTHIC
+      <div className="wg-horizontal-line"></div>
+    </Link>
+  </div>
+
+  {/* Mythical Honor Group */}
+  <div className="wg-rank-group">
+    <div className="wg-rank-icons">
+      <Link to="/mythical-honor">
+        <img className="wg-rank-icon wg-rank-icon-inactive" src="MythicHonor.png" alt="Mythical Honor rank icon" />
+      </Link>
+    </div>
+    <Link to="/mythical-honor" className="wg-rank-title wg-rank-title-inactive">
+      MYTHICAL HONOR
+      <div className="wg-horizontal-line"></div>
+    </Link>
+  </div>
+
+  {/* Mythical Glory Group */}
+  <div className="wg-rank-group">
+    <div className="wg-rank-icons">
+      <Link to="/mythical-glory">
+        <img className="wg-rank-icon wg-rank-icon-inactive" src="MythicGlory.png" alt="Mythical Glory rank icon" />
+      </Link>
+    </div>
+    <Link to="/mythical-glory" className="wg-rank-title wg-rank-title-inactive">
+      MYTHICAL GLORY
+      <div className="wg-horizontal-line"></div>
+    </Link>
+  </div>
+</div>
+        {/* Dynamic Content Area */}
+        <div className="wg-vertical-line"></div>
+
+        <div className="wg-content-container">
+
+        <div className="wg-main-title">{rankData.title}</div>
+        <div className="wg-subtitle">{rankData.subtitle}</div>
+
+
+          <div className="wg-content-area">
+            {/* Overview Section */}
+            <div className="wg-content-card">
+              <h2 className="wg-section-title">Overview</h2>
+              <ul className="wg-feature-list">
+                {rankData.overview.map((item, index) => (
+                  <li key={`overview-${index}`} className="wg-feature-item">
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
 
-          {/* Recommended Heroes */}
-          <div className="wg-content-card">
-            <h2 className="wg-section-title">Recommended Heroes</h2>
-            <div className="wg-heroes-grid">
-              {Object.entries(rankData.recommendedHeroes).map(([role, heroes]) => (
-                <RankHero 
-                  key={`hero-${role}`}
-                  role={role} 
-                  heroes={heroes} 
-                />
-              ))}
+            {/* Strategies Section */}
+            <div className="wg-content-card">
+              <h2 className="wg-section-title">Key Strategies</h2>
+              <div className="wg-strategies-grid">
+                {rankData.strategies.map((strategy, index) => (
+                  <Strategy 
+                    key={`strategy-${index}`}
+                    title={strategy.title} 
+                    description={strategy.description} 
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Recommended Heroes */}
+            <div className="wg-content-card">
+              <h2 className="wg-section-title">Recommended Heroes</h2>
+              <div className="wg-heroes-grid">
+                {Object.entries(rankData.recommendedHeroes).map(([role, heroes]) => (
+                  <RankHero 
+                    key={`hero-${role}`}
+                    role={role} 
+                    heroes={heroes} 
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Mobile Rank Icons - shown only on mobile */}
+        <div className="wg-rank-icons-container">
+          {/* Active rank icons */}
+          <Link to="/warrior-gm">
+            <img 
+              className="wg-rank-icon wg-rank-icon-active"
+              src="Warrior.png"
+              alt="Warrior rank icon"
+            />
+          </Link>
+         
+          {/* Inactive rank icons */}
+          <Link to="/epic-legend">
+            <img 
+              className="wg-rank-icon wg-rank-icon-inactive"
+              src="Epic.png"
+              alt="Epic rank icon"
+            />
+          </Link>
+         
+          <Link to="/mythic">
+            <img 
+              className="wg-rank-icon wg-rank-icon-inactive"
+              src="Mythic.png"
+              alt="Mythic rank icon"
+            />
+          </Link>
+          <Link to="/mythical-honor">
+            <img 
+              className="wg-rank-icon wg-rank-icon-inactive"
+              src="MythicHonor.png"
+              alt="Mythical Honor rank icon"
+            />
+          </Link>
+          <Link to="/mythical-glory">
+            <img 
+              className="wg-rank-icon wg-rank-icon-inactive"
+              src="MythicGlory.png"
+              alt="Mythical Glory rank icon"
+            />
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

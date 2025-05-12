@@ -1,38 +1,80 @@
-.FAQs {
-    /* margin: 0px; */
-    /* padding: 20px 0px 0px 0px; */
+.faq-container {
+    position: relative;
     padding-top: 15vh;
     background-image: url("Background.png");
     background-size: cover;
-    height: 100vh;
-    /* width: 100vw;
-    color: #C9AC67;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: bold */
-}
-
-.title {
-    padding: 20px 0px;
-    text-align: center;
-}
-
-.faq-container {
-    /* padding: 20px 0px; */
-}
-
-.faq-item {
-    padding: 20px 0px 0px;
-}
-
-.faq-question {
+    min-height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .faq-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  .faq-item {
+    background-color: rgba(55, 132, 193, 0.7);
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
     cursor: pointer;
-    padding: 0px 30px;
-}
-
-.faq-answer {
-    padding: 15px 30px 0px;
-}
-
-hr {
-    margin: 20px 10px 0px;
-}
+    transition: all 0.3s ease;
+  }
+  
+  .faq-item:hover {
+    background-color: rgba(55, 132, 193, 0.9);
+  }
+  
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-question h3 {
+    color: #ffff;
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  
+  .dropdown-icon {
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+  }
+  
+  .dropdown-icon.open {
+    transform: rotate(180deg);
+  }
+  
+  .faq-answer {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 1rem;
+  }
+  
+  .faq-answer p {
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .faq-content {
+      width: 90%;
+      padding: 1rem;
+    }
+    
+    .faq-question h3 {
+      font-size: 1.1rem;
+    }
+  }

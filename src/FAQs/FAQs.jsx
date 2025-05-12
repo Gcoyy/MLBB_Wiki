@@ -1,40 +1,66 @@
-import "./FAQs.css"
-import { useState } from "react";
+import React, { useState } from 'react';
+import "./FAQ.css";
 
-const faqs = [
-    { question: "What is Mobile Legends: Bang Bang?", answer: "Mobile Legends is a 5v5 multiplayer online battle arena (MOBA) game." },
-    { question: "Is Mobile Legends free to play?", answer: "Yes, Mobile Legends is free to play with optional in-game purchases." },
-    { question: "What are the different game modes in Mobile Legends?", answer: "Game modes include Classic, Ranked, Brawl, Arcade, and more." },
-    { question: "How do ranks work in Mobile Legends?", answer: "Players progress through ranks like Warrior, Elite, Master, Grandmaster, Epic, Legend, and Mythic by winning ranked matches." },
-    { question: "What are Emblems, and how do they work?", answer: "Emblems provide bonus stats and abilities to heroes based on their roles." },
-    { question: "What is the current meta?", answer: "The meta constantly changes, but it typically revolves around strong heroes, strategies, and team compositions in the latest patch." }
-  ];
+function FAQ() {
+  const [activeIndex, setActiveIndex] = useState(null);
 
-function FAQs() {
-    const [openIndex, setOpenIndex] = useState(null);
-
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleAnswer = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
-  return (
-    <div className="FAQs">
-        <h1 className="title">FAQs</h1>
+  const faqs = [
+    {
+      question: "What is Mobile Legends: Bang Bang?",
+      answer: "Mobile Legends: Bang Bang is a multiplayer online battle arena (MOBA) game designed for mobile phones."
+    },
+    {
+      question: "Is Mobile Legends free to play?",
+      answer: "Yes, Mobile Legends is free to play with optional in-game purchases."
+    },
+    {
+      question: "What are the different game modes in Mobile Legends?",
+      answer: "The main modes are Classic, Rank, Brawl, and various special event modes."
+    },
+    {
+      question: "How do ranks work in Mobile Legends?",
+      answer: "Players progress through tiers from Warrior to Mythical Glory by earning stars through victories."
+    },
+    {
+      question: "What are Emblems, and how do they work?",
+      answer: "Emblems are customizable talent trees that provide stat bonuses and special effects for your heroes."
+    },
+    {
+      question: "What is the current meta?",
+      answer: "The meta changes with updates, but currently marksmen and strong early-game fighters dominate."
+    }
+  ];
 
-        <hr />
-        <div className="faq-container">
+  return (
+    <div className="faq-container">
+      <div className="faq-content">
+        <h1>FAQs</h1>
+        
         {faqs.map((faq, index) => (
-            <div key={index} className="faq-item">
-            <div className="faq-question" onClick={() => toggleFAQ(index)}>
-                {faq.question}
+          <div className="faq-item" key={index}>
+            <div 
+              className="faq-question" 
+              onClick={() => toggleAnswer(index)}
+            >
+              <h3>{faq.question}</h3>
+              <span className={`dropdown-icon ${activeIndex === index ? 'open' : ''}`}>
+                ▼
+              </span>
             </div>
-            {openIndex === index && <div className="faq-answer">{faq.answer}</div>}
-            <hr />
-            </div>
+            {activeIndex === index && (
+              <div className="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            )}
+          </div>
         ))}
-        </div>
+      </div>
     </div>
   );
-}    
+}
 
-export default FAQs
+export default FAQ;
