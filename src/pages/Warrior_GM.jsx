@@ -52,7 +52,7 @@ const WarriorGM = () => {
     return (
       <div className="mh-loading-screen">
         <div className="mh-loading-spinner"></div>
-        <p>Loading Mythic Honor data...</p>
+        <p>Loading WArrior_GM data...</p>
       </div>
     );
   }
@@ -84,7 +84,7 @@ const WarriorGM = () => {
         {/* Background image */}
         <img 
           className="wg-background-image" 
-          src="background.png" 
+          src="Background.png" 
           alt="Mobile Legends background" 
         />
 
@@ -253,6 +253,10 @@ const WarriorGM = () => {
             />
           </Link>
         </div>
+        <Link to="/lanes" className="lanes-float-button">
+          <span>More on Lanes</span>
+          <img src="/arrow-right.png" alt="Arrow" className="lanes-arrow-icon" />
+        </Link>
       </div>
     </>
   );

@@ -1,362 +1,415 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+:root {
+  --header-height: 1vh;
+  --header-height-mobile: 10vh;
+  --sidebar-width: 22vw;
+  --content-margin-left: 25vw;
+  --content-width: 70vw;
+}
 
-/* Main container */
+/* Background and Layout Fixes */
 .el-mobile-legends-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   background-color: transparent;
   overflow-x: hidden;
   overflow-y: auto;
+  padding-top: var(--header-height);
+}
+
+.el-background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  box-shadow: inset 0px 125px 20px 20px rgba(0, 0, 0, 0.25);
+  filter: blur(10px);
+  object-fit: cover;
+}
+
+/* Sidebar Container */
+.el-rank-sidebar {
+  width: 360px;
+  min-width: 350px;
+  max-width: 450px;
+  height: auto;
+  min-height: 650px;
+  position: absolute;
+  left: 3vw;
+  top: calc(var(--header-height) + 20vh);
+  background-color: #297fc1;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2rem 0;
+  z-index: 10;
 }
 
-/* Background image */
-.el-background-image {
-    width: 100vw;
-    height: 100vh;
-    position: fixed; /* Changed to fixed */
-    left: 0;
-    top: 0;
-    z-index: -1; /* Send to back */
-    box-shadow: inset 0px 125px 20px 20px rgba(0, 0, 0, 0.25);
-    filter: blur(10px);
+/* Rank Group Container */
+.el-rank-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0rem;
+  padding: 0 2rem;
 }
 
-/* Rank sidebar - Epic-Legend Purple Theme */
-.el-rank-sidebar {
-  width: 430px;
-  height: 862px;
-  position: absolute;
-  left: 79px;
-  top: 194px;
-  background-color: #297fc1; /* Epic-Legend purple */
-  box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
+/* Rank Icons Container */
+.el-rank-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 0rem;
+  width: 100%;
 }
 
-/* Rank titles */
+/* Rank Titles */
 .el-rank-title {
-  position: absolute;
   font-family: 'Inter', sans-serif;
-  font-size: 24px;
+  font-size: 1.25rem;
   font-weight: 600;
   color: white;
   text-decoration: none;
-  left: 50%;
-  transform: translateX(-50%);
   text-align: center;
-  width: max-content;
+  width: 100%;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
 }
 
 .el-rank-title-active {
-    top: 301px;
-    cursor: default;
-  }
-  
-  .el-rank-title-inactive {
-    top: 137px;
-    opacity: 0.5;
-    cursor: pointer;
-  }
-  
-  .el-rank-title-inactive:hover {
-    opacity: 0.8;
-  }
-  
-  .el-rank-title:nth-of-type(2) {
-    top: 469px;
-  }
-  
-  .el-rank-title:nth-of-type(3) {
-    top: 637px;
-  }
-  
-  .el-rank-title:nth-of-type(4) {
-    top: 805px;
-  }
+  color: #FFE198;
+  text-shadow: 0 0 8px rgba(255, 225, 152, 0.3);
+}
 
-/* Rank icons */
+.el-rank-title-inactive {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.el-rank-title-inactive:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Rank Icons */
 .el-rank-icon {
-  width: 110px;
-  height: 115px;
-  position: absolute;
+  width: 80px;
+  height: 85px;
+  transition: all 0.3s ease;
 }
 
 .el-rank-icon-active {
-  cursor: default;
+  opacity: 1;
+  filter: drop-shadow(0 0 10px rgba(201, 172, 103, 0.5));
 }
 
 .el-rank-icon-inactive {
-  opacity: 0.5;
-  backdrop-filter: blur(10px);
-  cursor: pointer;
+  opacity: 0.6;
+  backdrop-filter: blur(5px);
 }
 
 .el-rank-icon-inactive:hover {
-  opacity: 0.8;
+  opacity: 0.9;
+  transform: scale(1.05);
 }
 
-/* Icon positions */
-.el-warrior-icon { left: 53px; top: 18px; }
-.el-grandmaster-icon { left: 274px; top: 18px; }
-.el-epic-icon { left: 53px; top: 186px; }
-.el-legend-icon { left: 274px; top: 186px; }
-.el-mythic-icon { left: 165px; top: 346px; }
-.el-mythical-honor-icon { left: 165px; top: 514px; }
-.el-mythical-glory-icon { left: 165px; top: 682px; }
-
-/* Rank separators */
+/* Separator */
 .el-rank-separator {
-  position: absolute;
   font-family: serif;
-  font-size: 96px;
+  font-size: 5rem;
   font-weight: bold;
   color: #c9ac67;
-  left: 50%;
-  transform: translateX(-50%);
+  line-height: 1;
+  margin: 0 0.5rem;
 }
 
-.el-rank-separator-active {
-  width: 32px;
-  top: 152px; /* Positioned between Epic-Legend icons */
-}
-
-.el-rank-separator-inactive {
-  width: 32px;
-  height: 141px;
-  top: -2px;
-  opacity: 0.5;
-}
-
+/* Horizontal Line */
 .el-horizontal-line {
-  width: 380px;
-  height: 0;
-  position: absolute;
-  border: 2px solid #82bcea;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 38px;
+  width: 84%;
+  height: 5px;
+  background: linear-gradient(90deg,  #82bcea);
+  margin: 0.5rem auto 0;
 }
 
-/* Header */
-.el-header-section {
-  width: 100%;
-  height: 172px;
+/* Main Content Container */
+.el-content-container {
+  top: calc(var(--header-height) + 15vh);
+  margin-left: calc(380px + 5vw);
+  padding: 2rem 3rem;
+  width: calc(100% - 380px - 5vw);
+  max-width: 1200px;
   position: relative;
+  box-sizing: border-box;
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
 }
 
-.el-navigation-menu {
-  width: 100%;
-  height: 57px;
-  position: absolute;
-  top: 115px;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 50px;
-}
-
-.el-nav-links {
-  display: flex;
-  gap: 40px;
-}
-
-.el-nav-link {
-  font-family: 'Inter', sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  color: white;
-  cursor: pointer;
-}
-
-.el-language-selector {
-  width: 260px;
-  height: 57px;
-  position: relative;
-}
-
-.el-language-selector-border {
-  width: 260px;
-  height: 57px;
-  border: 2px solid #c9ac67;
-  display: flex;
-  align-items: center;
-  padding-left: 60px;
-}
-
-.el-language-text {
-  font-family: serif;
-  font-size: 40px;
-  font-weight: bold;
-  color: #c9ac67;
-}
-
-.el-language-icon {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  left: 14px;
-  top: 9px;
-}
-
-.el-logo-container {
-  width: 345px;
-  height: 172px;
-  position: absolute;
-  left: 50px;
-  top: 0;
-  overflow: hidden;
-}
-
-.el-logo-wrapper {
-  width: 340.46px;
-  height: 339.47px;
-  position: absolute;
-  left: 2.27px;
-  top: -74.26px;
-}
-
-.el-logo-image {
-  width: 340.46px;
-  height: 339.47px;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-/* Content */
+/* Content Styling */
 .el-main-title {
-  width: 1067px;
-  height: 99px;
-  position: absolute;
-  left: 651px;
-  top: 177px;
   font-family: 'Inter', sans-serif;
-  font-size: 64px;
+  font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 600;
   color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .el-vertical-line {
-  width: 864.02px;
-  height: 0;
   position: absolute;
-  left: 586.97px;
-  top: 191.99px;
-  transform: rotate(90deg);
-  transform-origin: top left;
-  border: 4px solid #82bcea;
+  left: calc(360px + 6.5vw);
+  top: calc(var(--header-height) + 20vh);
+  bottom: 0vh;
+  width: 4px;
+  background: #82bcea;
+  z-index: 1;
 }
 
 .el-subtitle {
-  width: 1111px;
-  position: absolute;
-  left: 653px;
-  top: 296px;
   font-family: 'Inter', sans-serif;
-  font-size: 36px;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
   font-weight: 500;
   color: white;
-}
-
-/* Content area */
-.el-content-container {
-  width: 100%;
-  position: relative;
+  margin-bottom: 2.5rem;
+  line-height: 1.3;
 }
 
 .el-content-area {
-  width: 1277px;
-  height: 643px;
-  position: absolute;
-  left: 658px;
-  top: 409px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
+  width: 100%;
+  padding-right: 1rem;
+}
+
+/* Content Cards */
+.el-content-card {
+  margin-bottom: 2.5rem;
 }
 
 .el-section-title {
   font-family: 'Inter', sans-serif;
-  font-size: 28px;
-  font-weight: bold;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 700;
   color: white;
-  margin-bottom: 4px;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-left: 1rem;
+  text-align: left;
 }
 
-.el-section-text {
+.el-section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: #c9ac67;
+}
+
+.el-feature-list {
   font-family: 'Inter', sans-serif;
-  font-size: 28px;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
   font-weight: 400;
   color: white;
-  margin-bottom: 24px;
+  list-style-type: none;
+  padding-left: 1.5rem;
+  line-height: 1.6;
 }
 
-.el-strategies-container {
-  margin-bottom: 24px;
+.el-feature-item {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.el-feature-item::before {
+  content: "•";
+  color: #c9ac67;
+  position: absolute;
+  left: 0;
+  font-size: 1.5em;
+  line-height: 0.8;
+}
+
+.el-strategies-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
 }
 
 .el-strategy-text {
   font-family: 'Inter', sans-serif;
-  font-size: 28px;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
   font-weight: 400;
   color: white;
-  margin-bottom: 8px;
+  line-height: 1.6;
 }
 
-.el-rank-hero-text {
+.el-strategy-text strong {
+  color: #FFE198;
+}
+
+.el-heroes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   font-family: 'Inter', sans-serif;
-  font-size: 28px;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
   font-weight: 400;
+  gap: 1.5rem;
+}
+
+.el-rank-icons-container {
+  display: none;
+}
+
+.lanes-float-button {
+  position: absolute; /* Changed from fixed to absolute */
+  right: 5vw;
+  background-color: #182851;
   color: white;
-  display: block;
-  margin-bottom: 8px;
+  padding: 18px 30px; /* Increased size */
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: bold;
+  font-size: 18px; /* Increased font size */
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: background-color 0.3s ease;
 }
 
-.el-heroes-container {
-  margin-top: 20px;
+.lanes-float-button:hover {
+  background-color: #243b70;
 }
 
-/* Play button */
-.el-play-button {
-    transform: rotate(180deg);
-    transform-origin: top left;
-    width: 221.12px;
-    height: 57.39px;
-    position: absolute;
-    left: 1851.12px;
-    top: 1042.39px;
+.lanes-arrow-icon {
+  width: 30px;  /* Slightly bigger */
+  height: 30px;
+}
+/* Tablet and Mobile Media Query (728px) */
+@media only screen and (max-width: 728px) {
+  :root {
+    --header-height: 3vh;
+    --content-margin-left: 0;
+    --content-width: 90vw;
   }
-  
-  .el-play-button-border {
-    width: 221.12px;
-    height: 57.39px;
-    position: absolute;
-    left: 0;
+
+  .el-mobile-legends-container {
+    padding-top: var(--header-height);
+    padding-bottom: 80px;
+  }
+
+  .el-background-image {
+    height: 100vh;
     top: 0;
-    transform: rotate(180deg);
-    transform-origin: top left;
-    border: 2px solid #81bbe9;
   }
 
-  .el-feature-list {
-    font-family: 'Inter', sans-serif;
-    font-size: 28px;
-    font-weight: 400;
-    color: white;
-    list-style-type: none;
-    padding-left: 20px;
+  .el-rank-sidebar {
+    display: none;
   }
-  
-  .el-feature-item {
-    position: relative;
-    margin-bottom: 10px;
-  }
-  
-  .el-feature-item::before {
-    content: "•";
-    color: #c9ac67;
+
+  .el-rank-icons-container {
     position: absolute;
-    left: -20px;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0 auto;
+    width: 95%;
+    max-width: 400px;
+    padding: 12px;
+    z-index: 100;
   }
+
+  .el-rank-icons-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: 2px;
+    background: #82bcea;
+  }
+
+  .el-rank-icons-container .el-rank-icon {
+    width: 50px;
+    height: 55px;
+    transition: all 0.3s ease;
+  }
+
+  .el-rank-icons-container .el-rank-icon-active {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(201, 172, 103, 0.7));
+  }
+
+  .el-rank-icons-container .el-rank-icon-inactive {
+    opacity: 0.5;
+  }
+
+  .el-rank-icons-container .el-rank-icon-inactive:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+
+  .el-content-container {
+    margin-left: 0;
+    width: 90%;
+    padding: 1.5rem;
+    top: calc(var(--header-height) + 2vh);
+    margin-bottom: 20px;
+  }
+
+  .el-vertical-line {
+    display: none;
+  }
+
+  .el-main-title {
+    font-size: 1.9rem;
+    text-align: left;
+    margin-top: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .el-subtitle {
+    font-size: 1.2rem;
+    text-align: left;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .el-content-area {
+    padding-right: 0;
+  }
+
+  .el-content-card {
+    margin-bottom: 2rem;
+  }
+
+  .el-section-title {
+    font-size: 1.4rem;
+    text-align: left;
+    margin-bottom: 1.2rem;
+  }
+
+  .el-feature-list,
+  .el-strategy-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .el-heroes-grid {
+    grid-template-columns: 1fr;
+    font-size: 1.1rem;
+    gap: 1rem;
+  }
+}

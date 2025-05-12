@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../styles/MythicHonor.css";
 import { Link } from "react-router-dom";
-import Header from "../Header/Header.jsx";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import Header from "../Header/Header.jsx";
 
 // Reusable components
 const RankHero = ({ role, heroes }) => (
@@ -78,142 +78,183 @@ const MythicHonor = () => {
 
   // Main render
   return (
-    <div className="mh-mobile-legends-container">
-      {/* Background image */}
-      <img 
-        className="mh-background-image" 
-        src="background.png" 
-        alt="Mobile Legends background" 
-      />
-
-      {/* Sidebar Navigation */}
-      <div className="mh-rank-sidebar">
-        <Link to="/warrior-gm" className="mh-rank-title mh-rank-title-inactive">
-          WARRIOR - GRANDMASTER
-          <div className="mh-horizontal-line"></div>
-        </Link>
-        <Link to="/epic-legend" className="mh-rank-title mh-rank-title-inactive">
-          EPIC - LEGEND
-          <div className="mh-horizontal-line"></div>
-        </Link>
-        <Link to="/mythic" className="mh-rank-title mh-rank-title-inactive">
-          MYTHIC
-          <div className="mh-horizontal-line"></div>
-        </Link>
-        <div className="mh-rank-title mh-rank-title-active">
-          MYTHICAL HONOR
-          <div className="mh-horizontal-line"></div>
-        </div>
-        <Link to="/mythical-glory" className="mh-rank-title mh-rank-title-inactive">
-          MYTHICAL GLORY
-          <div className="mh-horizontal-line"></div>
-        </Link>
-
-        {/* Rank Icons */}
-        <Link to="/warrior-gm">
-          <img 
-            className="mh-rank-icon mh-rank-icon-inactive mh-warrior-icon"
-            src="Warrior.png"
-            alt="Warrior rank icon"
-          />
-        </Link>
-        <Link to="/warrior-gm">
-          <img 
-            className="mh-rank-icon mh-rank-icon-inactive mh-grandmaster-icon"
-            src="Grandmastur.png"
-            alt="Grandmaster rank icon"
-          />
-        </Link>
-        <div className="mh-rank-separator mh-rank-separator-inactive">-</div>
-
-        <Link to="/epic-legend">
-          <img 
-            className="mh-rank-icon mh-rank-icon-inactive mh-epic-icon"
-            src="Epic.png"
-            alt="Epic rank icon"
-          />
-        </Link>
-        <Link to="/epic-legend">
-          <img 
-            className="mh-rank-icon mh-rank-icon-inactive mh-legend-icon"
-            src="Legend.png"
-            alt="Legend rank icon"
-          />
-        </Link>
-        <div className="mh-rank-separator mh-rank-separator-inactive">-</div>
-
-        <Link to="/mythic">
-          <img 
-            className="mh-rank-icon mh-rank-icon-inactive mh-mythic-icon"
-            src="Mythic.png"
-            alt="Mythic rank icon"
-          />
-        </Link>
-        <img 
-          className="mh-rank-icon mh-rank-icon-active mh-mythical-honor-icon"
-          src="MythicHonor.png"
-          alt="Mythical Honor rank icon"
-        />
-        <Link to="/mythical-glory">
-          <img 
-            className="mh-rank-icon mh-rank-icon-inactive mh-mythical-glory-icon"
-            src="MythicGlory.png"
-            alt="Mythical Glory rank icon"
-          />
-        </Link>
-      </div>
-
+    <>
       <Header />
+      <div className="mh-mobile-legends-container">
+        {/* Background image */}
+        <img 
+          className="mh-background-image" 
+          src="Background.png" 
+          alt="Mobile Legends background" 
+        />
 
-      {/* Dynamic Content Area */}
-      <div className="mh-main-title">{rankData.title}</div>
-      <div className="mh-vertical-line"></div>
-      <div className="mh-subtitle">{rankData.subtitle}</div>
-
-      <div className="mh-content-container">
-        <div className="mh-content-area">
-          {/* Overview Section */}
-          <div className="mh-content-card">
-            <h2 className="mh-section-title">Overview</h2>
-            <ul className="mh-feature-list">
-              {rankData.overview.map((item, index) => (
-                <li key={`overview-${index}`} className="mh-feature-item">
-                  {item}
-                </li>
-              ))}
-            </ul>
+        {/* Desktop Sidebar Navigation - hidden on mobile */}
+        <div className="mh-rank-sidebar">
+          {/* Warrior - Grandmaster Group */}
+          <div className="mh-rank-group">
+            <div className="mh-rank-icons">
+              <Link to="/warrior-gm">
+                <img className="mh-rank-icon mh-rank-icon-inactive" src="Warrior.png" alt="Warrior rank icon" />
+              </Link>
+              <div className="mh-rank-separator">-</div>
+              <Link to="/warrior-gm">
+                <img className="mh-rank-icon mh-rank-icon-inactive" src="Grandmastur.png" alt="Grandmaster rank icon" />
+              </Link>
+            </div>
+            <Link to="/warrior-gm" className="mh-rank-title mh-rank-title-inactive">
+              WARRIOR - GRANDMASTER
+              <div className="mh-horizontal-line"></div>
+            </Link>
           </div>
 
-          {/* Strategies Section */}
-          <div className="mh-content-card">
-            <h2 className="mh-section-title">Key Strategies</h2>
-            <div className="mh-strategies-grid">
-              {rankData.strategies.map((strategy, index) => (
-                <Strategy 
-                  key={`strategy-${index}`}
-                  title={strategy.title} 
-                  description={strategy.description} 
-                />
-              ))}
+          {/* Epic - Legend Group */}
+          <div className="mh-rank-group">
+            <div className="mh-rank-icons">
+              <Link to="/epic-legend">
+                <img className="mh-rank-icon mh-rank-icon-inactive" src="Epic.png" alt="Epic rank icon" />
+              </Link>
+              <div className="mh-rank-separator">-</div>
+              <Link to="/epic-legend">
+                <img className="mh-rank-icon mh-rank-icon-inactive" src="Legend.png" alt="Legend rank icon" />
+              </Link>
+            </div>
+            <Link to="/epic-legend" className="mh-rank-title mh-rank-title-inactive">
+              EPIC - LEGEND
+              <div className="mh-horizontal-line"></div>
+            </Link>
+          </div>
+
+          {/* Mythic Group */}
+          <div className="mh-rank-group">
+            <div className="mh-rank-icons">
+              <Link to="/mythic">
+                <img className="mh-rank-icon mh-rank-icon-inactive" src="Mythic.png" alt="Mythic rank icon" />
+              </Link>
+            </div>
+            <Link to="/mythic" className="mh-rank-title mh-rank-title-inactive">
+              MYTHIC
+              <div className="mh-horizontal-line"></div>
+            </Link>
+          </div>
+
+          {/* Mythical Honor Group */}
+          <div className="mh-rank-group">
+            <div className="mh-rank-icons">
+              <img className="mh-rank-icon mh-rank-icon-active" src="MythicHonor.png" alt="Mythical Honor rank icon" />
+            </div>
+            <div className="mh-rank-title mh-rank-title-active">
+              MYTHICAL HONOR
+              <div className="mh-horizontal-line"></div>
             </div>
           </div>
 
-          {/* Recommended Heroes */}
-          <div className="mh-content-card">
-            <h2 className="mh-section-title">Recommended Heroes</h2>
-            <div className="mh-heroes-grid">
-              {Object.entries(rankData.recommendedHeroes).map(([role, heroes]) => (
-                <RankHero 
-                  key={`hero-${role}`}
-                  role={role} 
-                  heroes={heroes} 
-                />
-              ))}
+          {/* Mythical Glory Group */}
+          <div className="mh-rank-group">
+            <div className="mh-rank-icons">
+              <Link to="/mythical-glory">
+                <img className="mh-rank-icon mh-rank-icon-inactive" src="MythicGlory.png" alt="Mythical Glory rank icon" />
+              </Link>
+            </div>
+            <Link to="/mythical-glory" className="mh-rank-title mh-rank-title-inactive">
+              MYTHICAL GLORY
+              <div className="mh-horizontal-line"></div>
+            </Link>
+          </div>
+        </div>
+
+        {/* Vertical separator line */}
+        <div className="mh-vertical-line"></div>
+
+        {/* Dynamic Content Area */}
+        <div className="mh-content-container">
+          <div className="mh-main-title">{rankData.title}</div>
+          <div className="mh-subtitle">{rankData.subtitle}</div>
+
+          <div className="mh-content-area">
+            {/* Overview Section */}
+            <div className="mh-content-card">
+              <h2 className="mh-section-title">Overview</h2>
+              <ul className="mh-feature-list">
+                {rankData.overview.map((item, index) => (
+                  <li key={`overview-${index}`} className="mh-feature-item">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Strategies Section */}
+            <div className="mh-content-card">
+              <h2 className="mh-section-title">Key Strategies</h2>
+              <div className="mh-strategies-grid">
+                {rankData.strategies.map((strategy, index) => (
+                  <Strategy 
+                    key={`strategy-${index}`}
+                    title={strategy.title} 
+                    description={strategy.description} 
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Recommended Heroes */}
+            <div className="mh-content-card">
+              <h2 className="mh-section-title">Recommended Heroes</h2>
+              <div className="mh-heroes-grid">
+                {Object.entries(rankData.recommendedHeroes).map(([role, heroes]) => (
+                  <RankHero 
+                    key={`hero-${role}`}
+                    role={role} 
+                    heroes={heroes} 
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Mobile Rank Icons - shown only on mobile */}
+        <div className="mh-rank-icons-container">
+          <Link to="/warrior-gm">
+            <img 
+              className="mh-rank-icon mh-rank-icon-inactive"
+              src="Warrior.png"
+              alt="Warrior rank icon"
+            />
+          </Link>
+          <Link to="/epic-legend">
+            <img 
+              className="mh-rank-icon mh-rank-icon-inactive"
+              src="Epic.png"
+              alt="Epic rank icon"
+            />
+          </Link>
+          <Link to="/mythic">
+            <img 
+              className="mh-rank-icon mh-rank-icon-inactive"
+              src="Mythic.png"
+              alt="Mythic rank icon"
+            />
+          </Link>
+          <img 
+            className="mh-rank-icon mh-rank-icon-active"
+            src="MythicHonor.png"
+            alt="Mythical Honor rank icon"
+          />
+          <Link to="/mythical-glory">
+            <img 
+              className="mh-rank-icon mh-rank-icon-inactive"
+              src="MythicGlory.png"
+              alt="Mythical Glory rank icon"
+            />
+          </Link>
+        </div>
+        <Link to="/lanes" className="lanes-float-button">
+          <span>More on Lanes</span>
+          <img src="/arrow-right.png" alt="Arrow" className="lanes-arrow-icon" />
+        </Link>
       </div>
-    </div>
+    </>
   );
 };
 
