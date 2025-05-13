@@ -3,7 +3,7 @@ import "../styles/Warrior_GM.css";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
-import Header from "../Header/Header.jsx"; // Make sure this path matches your header component location
+// import Header from "../Header/Header.jsx"; // Make sure this path matches your header component location
 
 // Reusable components
 const RankHero = ({ role, heroes }) => (
@@ -79,7 +79,7 @@ const WarriorGM = () => {
   // Main render
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="wg-mobile-legends-container">
         {/* Background image */}
         <img 
@@ -253,7 +253,7 @@ const WarriorGM = () => {
             />
           </Link>
         </div>
-        <Link to="/lane" className="lanes-float-button">
+        <Link to={`/lane?word=Rank`} className="lanes-float-button">
           <span>More on Lanes</span>
           <img src="/arrow.png" alt="Arrow" className="lanes-arrow-icon" />
         </Link>

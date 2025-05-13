@@ -3,7 +3,7 @@ import "../styles/MythicHonor.css";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
-import Header from "../Header/Header.jsx";
+// import Header from "../Header/Header.jsx";
 
 // Reusable components
 const RankHero = ({ role, heroes }) => (
@@ -79,7 +79,7 @@ const MythicHonor = () => {
   // Main render
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="mh-mobile-legends-container">
         {/* Background image */}
         <img 
@@ -249,7 +249,7 @@ const MythicHonor = () => {
             />
           </Link>
         </div>
-        <Link to="/lane" className="lanes-float-button">
+        <Link to={`/lane?word=Rank`} className="lanes-float-button">
           <span>More on Lanes</span>
           <img src="/arrow.png" alt="Arrow" className="lanes-arrow-icon" />
         </Link>

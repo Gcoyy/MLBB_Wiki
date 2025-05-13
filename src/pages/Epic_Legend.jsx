@@ -3,7 +3,7 @@ import "../styles/Epic_Legend.css";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
-import Header from "../Header/Header.jsx";
+// import Header from "../Header/Header.jsx";
 
 // Reusable components (could also import from shared components)
 const RankHero = ({ role, heroes }) => (
@@ -79,7 +79,7 @@ const EpicLegend = () => {
   // Main render
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="el-mobile-legends-container">
         {/* Background image */}
         <img 
@@ -257,7 +257,7 @@ const EpicLegend = () => {
             />
           </Link>
         </div>
-        <Link to="/lane" className="lanes-float-button">
+        <Link to={`/lane?word=Rank`} className="lanes-float-button">shed changes
           <span>More on Lanes</span>
           <img src="/arrow.png" alt="Arrow" className="lanes-arrow-icon" />
         </Link>

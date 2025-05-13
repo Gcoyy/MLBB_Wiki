@@ -31,8 +31,8 @@ const Header = () => {
 
       <div className={`menu ${menuOpen ? "active" : ""}`}>
         <Link to="/" className={`home ${isActive("/")}`} onClick={handleLinkClick}>HOME</Link>
-        <Link to="/warrior-gm" className={`rank ${isActive("/warrior-gm")}`} onClick={handleLinkClick}>RANK</Link>
-        <Link to="/contact-us" className={`contact ${isActive("/contact")}`} onClick={handleLinkClick}>CONTACT</Link>
+        <Link to="/warrior-gm" className={`warrior-gm ${isActive("/warrior-gm")}`} onClick={handleLinkClick}>RANK</Link>
+        <Link to="/contact" className={`contact ${isActive("/contact")}`} onClick={handleLinkClick}>CONTACT</Link>
         <Link to="/about" className={`about ${isActive("/about")}`} onClick={handleLinkClick}>ABOUT</Link>
         <Link to="/sitemap" className={`sitemap ${isActive("/sitemap")}`} onClick={handleLinkClick}>SITE Map</Link>
         <Link to="/FAQs" className={`faqs ${isActive("/FAQs")}`} onClick={handleLinkClick}>FAQs</Link>
