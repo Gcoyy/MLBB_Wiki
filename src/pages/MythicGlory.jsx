@@ -249,9 +249,9 @@ const MythicGlory = () => {
             alt="Mythical Glory rank icon"
           />
         </div>
-        <Link to={`/lane?word=Rank`} className="lanes-float-button">
+        <Link to={`/lane?word=Rank`} className="mg-lanes-float-button">
           <span>More on Lanes</span>
-          <img src="/arrow.png" alt="Arrow" className="lanes-arrow-icon" />
+          <img src="/arrow.png" alt="Arrow" className="mg-lanes-arrow-icon" />
         </Link>
       </div>
     </>

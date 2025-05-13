@@ -274,7 +274,7 @@
   display: none; /* Hide by default */
 }
 
-.lanes-float-button {
+.my-lanes-float-button {
   position: absolute; /* Changed from fixed to absolute */
   right: 5vw;
   background-color: #182851;
@@ -284,19 +284,19 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: bold;
-  font-size: 18px; /* Increased font size */
-  text-decoration: none;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);  text-decoration: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   transition: background-color 0.3s ease;
 }
 
-.lanes-float-button:hover {
+.my-lanes-float-button:hover {
   background-color: #243b70;
 }
 
-.lanes-arrow-icon {
+.my-lanes-arrow-icon {
   width: 30px;  /* Slightly bigger */
   height: 30px;
 }

@@ -1,48 +1,78 @@
+import React, { useState, useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 import "./ContactUs.css";
-import Header from "../Header/Header.jsx";
-import React from "react";
 
 function ContactUs() {
+  const [contacts, setContacts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchContacts = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "contacts"));
+        const contactData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        })).sort((a, b) => a.order - b.order);
+        
+        setContacts(contactData);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+        console.error("Error fetching contacts:", err);
+      }
+    };
+
+    fetchContacts();
+  }, []);
+
+  if (loading) return (
+    <>
+      <div className="contact-us-container">
+        <div className="contact-us-content">
+          <h1 className="contact-title">Contact Us</h1>
+          <p>Loading contact information...</p>
+        </div>
+      </div>
+    </>
+  );
+
+  if (error) return (
+    <>
+      <div className="contact-us-container">
+        <div className="contact-us-content">
+          <h1 className="contact-title">Contact Us</h1>
+          <p className="error-message">Error: {error}</p>
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <>
-      <Header />
-      <div className="ContactUs">
-        <div className="contact-us-container">
-          <h1>Contact Us</h1>
-          <h2>We'd love to hear from you! Reach out for inquiries, collaborations, or feedback</h2>
-          <br></br>
+      <div className="contact-us-container">
+        <div className="contact-us-content">
+          <h1 className="contact-title">Contact Us</h1>
+          <h2 className="contact-subtitle">We'd love to hear from you! Reach out for inquiries, collaborations, or feedback</h2>
           <div className="cu-horizontal-line"></div>
-<br></br>
-          <div className="contact-us-content">
-            <div className="contact-method">
-              <div className="icon-and-heading">
-                <div className="contact-icon">
-                  <img src="Address.png" alt="Location" />
+          
+          <div className="contact-methods">
+            {contacts.length === 0 ? (
+              <p>No contact information available</p>
+            ) : (
+              contacts.map((contact) => (
+                <div className="contact-method" key={contact.id}>
+                  <div className="icon-and-heading">
+                    <img className="contact-icon" src={contact.icon} alt={contact.type} />
+                    <h3>{contact.title.split('\n').map((line, i) => <React.Fragment key={i}>{line}<br/></React.Fragment>)}</h3>
+                  </div>
+                  <p className="contact-description">{contact.description}</p>
                 </div>
-                <h3>Silliman University,<br />College of Computer Studies</h3>
-              </div><br></br>
-              <p>→ Visit us at our university for inquiries and discussions.</p>
-            </div>
-
-            <div className="contact-method">
-              <div className="icon-and-heading">
-                <div className="contact-icon">
-                  <img src="Phone.png" alt="Phone" />
-                </div>
-                <h3>09328764723<br />09948345321</h3>
-              </div><br></br>
-              <p>→ Call or text us for quick assistance and inquiries.</p>
-            </div>
-
-            <div className="contact-method">
-              <div className="icon-and-heading">
-                <div className="contact-icon">
-                  <img src="Email.png" alt="Email" />
-                </div>
-                <h3>giancarlobdejesus@su.edu.ph<br />lancevillanueva@su.edu.ph</h3>
-              </div><br></br>
-              <p>→ Drop us an email for questions, feedback, or collaborations.</p>
-            </div>
+              ))
+            )}
           </div>
         </div>
       </div>

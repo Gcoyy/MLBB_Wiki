@@ -30,6 +30,10 @@
     cursor: pointer;
     transition: all 0.3s ease;
   }
+
+  .faq-content h1 {
+    margin-bottom: 2rem;
+  }
   
   .faq-item:hover {
     background-color: rgba(55, 132, 193, 0.9);
@@ -70,11 +74,15 @@
   
   @media (max-width: 768px) {
     .faq-content {
-      width: 90%;
+      width: 80%;
       padding: 1rem;
     }
     
     .faq-question h3 {
       font-size: 1.1rem;
+    }
+
+    .faq-content h1 {
+      margin-bottom: 2rem;
     }
   }

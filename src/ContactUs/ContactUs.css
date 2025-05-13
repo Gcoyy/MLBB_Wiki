@@ -1,80 +1,157 @@
-.ContactUs {
-    position: relative;
-    padding-top: 20vh;
-    background-image: url("Background.png");
-    background-size: cover;
-    min-height: 100vh;
-    width: 100vw; 
-    background-repeat: no-repeat;
-    font-family: 'Inter', sans-serif;
-    color: white;
-    display: flex;
-    justify-content: center;
-  }
-  
+/* Base Styles */
+.contact-us-container {
+  position: relative;
+  padding-top: 20vh;
+  background-image: url("Background.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
 
-  .cu-horizontal-line {
-    width: min(86vw, 1500px);
-    height: 0;
-    border: 4px solid #82bcea;
-    text-align: center;
+.contact-us-content {
+  width: min(90%, 1200px);
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Typography */
+.contact-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.contact-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+/* Divider Line */
+.cu-horizontal-line {
+  width: min(86vw, 800px);
+  height: 2px;
+  background: #82bcea;
+  margin: 1.5rem 0;
+}
+
+/* Contact Methods */
+.contact-methods {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the contact method containers */
+
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.contact-method {
+  background: #3784C1;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.contact-method:hover {
+  transform: translateY(-5px);
+}
+
+.icon-and-heading {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-icon {
+  width: clamp(30px, 4vw, 40px);
+  height: clamp(30px, 4vw, 40px);
+  flex-shrink: 0;
+}
+
+.contact-method h3 {
+  margin: 0;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.contact-description {
+  margin: 0;
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+  line-height: 1.6;
+  font-style: italic;
+  padding-left: calc(clamp(30px, 4vw, 40px) + 1.5rem);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .contact-us-container {
+    padding-top: 15vh;
   }
   
   .contact-us-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    gap: 2rem;
-    text-align: center;
-    font-size: 24px;
+    padding: 1.5rem 0;
   }
   
   .contact-methods {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 1.5rem;
   }
   
-  /* Keep your existing .ContactUs, .contact-us-container styles */
+  .contact-method {
+    padding: 1.2rem;
+    width: 95%; /* Slightly more width on mobile */
 
-.contact-method {
-    border-radius: 5px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
   }
   
   .icon-and-heading {
-    display: flex;
-    align-items: flex-start; /* Aligns icon with first line of text */
-    gap: 5rem;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
   }
   
-  .contact-icon {
-    width: 30px; /* Adjust icon size */
-    height: 30px;
-    margin-top: 0.3rem; /* Fine-tune vertical alignment */
+  .contact-description {
+    padding-left: 0;
+    margin-top: 0.5rem;
+  }
+  
+  .cu-horizontal-line {
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-us-container {
+    padding-top: 12vh;
+  }
+  
+  .contact-method {
+    padding: 1rem;
   }
   
   .contact-method h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    line-height: 1.4;
+    font-size: 1rem;
   }
   
-  .contact-method p {
-    margin: 0.1rem 0 0 0.1rem; /* 30px icon + 1rem gap = ~2.8rem indent */
-    font-style: italic;
+  .contact-description {
+    font-size: 0.9rem;
   }
-  
-  /* Mobile responsiveness */
-  @media (max-width: 768px) {
-    .icon-and-heading {
-      gap: 0.8rem;
-    }
-    .contact-method p {
-      margin-left: 0; /* Remove indent on mobile */
-    }
-  }
+}

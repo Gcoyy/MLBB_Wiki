@@ -253,9 +253,9 @@ const WarriorGM = () => {
             />
           </Link>
         </div>
-        <Link to={`/lane?word=Rank`} className="lanes-float-button">
+        <Link to={`/lane?word=Rank`} className="wg-lanes-float-button">
           <span>More on Lanes</span>
-          <img src="/arrow.png" alt="Arrow" className="lanes-arrow-icon" />
+          <img src="/arrow.png" alt="Arrow" className="wg-lanes-arrow-icon" />
         </Link>
       </div>
     </>

@@ -283,8 +283,9 @@
   background-color: #182851;
   color: #FFFFFF;
   border-radius: 30px;
-  font-size: 16px;
-  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-weight: 700;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
