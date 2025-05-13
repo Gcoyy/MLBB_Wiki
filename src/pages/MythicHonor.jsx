@@ -3,7 +3,6 @@ import "../styles/MythicHonor.css";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
-// import Header from "../Header/Header.jsx";
 
 // Reusable components
 const RankHero = ({ role, heroes }) => (
@@ -20,10 +19,25 @@ const Strategy = ({ title, description }) => (
   </div>
 );
 
+// Tooltip component
+const Tooltip = ({ content, children }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div className="mh-tooltip-container" 
+         onMouseEnter={() => setIsVisible(true)}
+         onMouseLeave={() => setIsVisible(false)}>
+      {children}
+      {isVisible && <div className="mh-tooltip">{content}</div>}
+    </div>
+  );
+};
+
 const MythicHonor = () => {
   const [rankData, setRankData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showLaneTooltip, setShowLaneTooltip] = useState(false);
 
   useEffect(() => {
     const fetchRankData = async () => {
@@ -79,27 +93,32 @@ const MythicHonor = () => {
   // Main render
   return (
     <>
-      {/* <Header /> */}
       <div className="mh-mobile-legends-container">
-        {/* Background image */}
-        <img 
-          className="mh-background-image" 
-          src="Background.png" 
-          alt="Mobile Legends background" 
-        />
+        {/* Background image with tooltip */}
+        <Tooltip content="Mobile Legends background image">
+          <img 
+            className="mh-background-image" 
+            src="Background.png" 
+            alt="Mobile Legends background" 
+          />
+        </Tooltip>
 
         {/* Desktop Sidebar Navigation - hidden on mobile */}
         <div className="mh-rank-sidebar">
           {/* Warrior - Grandmaster Group */}
           <div className="mh-rank-group">
             <div className="mh-rank-icons">
-              <Link to="/warrior-gm">
-                <img className="mh-rank-icon mh-rank-icon-inactive" src="Warrior.png" alt="Warrior rank icon" />
-              </Link>
+              <Tooltip content="Warrior Rank">
+                <Link to="/warrior-gm">
+                  <img className="mh-rank-icon mh-rank-icon-inactive" src="Warrior.png" alt="Warrior rank icon" />
+                </Link>
+              </Tooltip>
               <div className="mh-rank-separator">-</div>
-              <Link to="/warrior-gm">
-                <img className="mh-rank-icon mh-rank-icon-inactive" src="Grandmastur.png" alt="Grandmaster rank icon" />
-              </Link>
+              <Tooltip content="Grandmaster Rank">
+                <Link to="/warrior-gm">
+                  <img className="mh-rank-icon mh-rank-icon-inactive" src="Grandmastur.png" alt="Grandmaster rank icon" />
+                </Link>
+              </Tooltip>
             </div>
             <Link to="/warrior-gm" className="mh-rank-title mh-rank-title-inactive">
               WARRIOR - GRANDMASTER
@@ -110,13 +129,17 @@ const MythicHonor = () => {
           {/* Epic - Legend Group */}
           <div className="mh-rank-group">
             <div className="mh-rank-icons">
-              <Link to="/epic-legend">
-                <img className="mh-rank-icon mh-rank-icon-inactive" src="Epic.png" alt="Epic rank icon" />
-              </Link>
+              <Tooltip content="Epic Rank">
+                <Link to="/epic-legend">
+                  <img className="mh-rank-icon mh-rank-icon-inactive" src="Epic.png" alt="Epic rank icon" />
+                </Link>
+              </Tooltip>
               <div className="mh-rank-separator">-</div>
-              <Link to="/epic-legend">
-                <img className="mh-rank-icon mh-rank-icon-inactive" src="Legend.png" alt="Legend rank icon" />
-              </Link>
+              <Tooltip content="Legend Rank">
+                <Link to="/epic-legend">
+                  <img className="mh-rank-icon mh-rank-icon-inactive" src="Legend.png" alt="Legend rank icon" />
+                </Link>
+              </Tooltip>
             </div>
             <Link to="/epic-legend" className="mh-rank-title mh-rank-title-inactive">
               EPIC - LEGEND
@@ -127,9 +150,11 @@ const MythicHonor = () => {
           {/* Mythic Group */}
           <div className="mh-rank-group">
             <div className="mh-rank-icons">
-              <Link to="/mythic">
-                <img className="mh-rank-icon mh-rank-icon-inactive" src="Mythic.png" alt="Mythic rank icon" />
-              </Link>
+              <Tooltip content="Mythic Rank">
+                <Link to="/mythic">
+                  <img className="mh-rank-icon mh-rank-icon-inactive" src="Mythic.png" alt="Mythic rank icon" />
+                </Link>
+              </Tooltip>
             </div>
             <Link to="/mythic" className="mh-rank-title mh-rank-title-inactive">
               MYTHIC
@@ -140,7 +165,9 @@ const MythicHonor = () => {
           {/* Mythical Honor Group */}
           <div className="mh-rank-group">
             <div className="mh-rank-icons">
-              <img className="mh-rank-icon mh-rank-icon-active" src="MythicHonor.png" alt="Mythical Honor rank icon" />
+              <Tooltip content="Mythical Honor Rank">
+                <img className="mh-rank-icon mh-rank-icon-active" src="MythicHonor.png" alt="Mythical Honor rank icon" />
+              </Tooltip>
             </div>
             <div className="mh-rank-title mh-rank-title-active">
               MYTHICAL HONOR
@@ -151,9 +178,11 @@ const MythicHonor = () => {
           {/* Mythical Glory Group */}
           <div className="mh-rank-group">
             <div className="mh-rank-icons">
-              <Link to="/mythical-glory">
-                <img className="mh-rank-icon mh-rank-icon-inactive" src="MythicGlory.png" alt="Mythical Glory rank icon" />
-              </Link>
+              <Tooltip content="Mythical Glory Rank">
+                <Link to="/mythical-glory">
+                  <img className="mh-rank-icon mh-rank-icon-inactive" src="MythicGlory.png" alt="Mythical Glory rank icon" />
+                </Link>
+              </Tooltip>
             </div>
             <Link to="/mythical-glory" className="mh-rank-title mh-rank-title-inactive">
               MYTHICAL GLORY
@@ -210,49 +239,75 @@ const MythicHonor = () => {
                 ))}
               </div>
             </div>
+             {/* Fixed Lane Button with separate hover state */}
+             <div className="wg-lanes-float-container"
+     onMouseEnter={() => setShowLaneTooltip(true)}
+     onMouseLeave={() => setShowLaneTooltip(false)}>
+  <Link to={`/lane?word=Rank`} className="wg-lanes-float-button">
+    <span>More on Lanes</span>
+    <img src="/arrow.png" alt="Arrow" className="wg-lanes-arrow-icon" />
+  </Link>
+  {showLaneTooltip && (
+    <div className="wg-lanes-tooltip">
+      Learn more about lanes
+    </div>
+  )}
+</div>
           </div>
         </div>
 
         {/* Mobile Rank Icons - shown only on mobile */}
         <div className="mh-rank-icons-container">
-          <Link to="/warrior-gm">
+          <Tooltip content="Warrior Rank">
+            <Link to="/warrior-gm">
+              <img 
+                className="mh-rank-icon mh-rank-icon-inactive"
+                src="Warrior.png"
+                alt="Warrior rank icon"
+              />
+            </Link>
+          </Tooltip>
+          
+          <Tooltip content="Epic Rank">
+            <Link to="/epic-legend">
+              <img 
+                className="mh-rank-icon mh-rank-icon-inactive"
+                src="Epic.png"
+                alt="Epic rank icon"
+              />
+            </Link>
+          </Tooltip>
+          
+          <Tooltip content="Mythic Rank">
+            <Link to="/mythic">
+              <img 
+                className="mh-rank-icon mh-rank-icon-inactive"
+                src="Mythic.png"
+                alt="Mythic rank icon"
+              />
+            </Link>
+          </Tooltip>
+          
+          <Tooltip content="Mythical Honor Rank">
             <img 
-              className="mh-rank-icon mh-rank-icon-inactive"
-              src="Warrior.png"
-              alt="Warrior rank icon"
+              className="mh-rank-icon mh-rank-icon-active"
+              src="MythicHonor.png"
+              alt="Mythical Honor rank icon"
             />
-          </Link>
-          <Link to="/epic-legend">
-            <img 
-              className="mh-rank-icon mh-rank-icon-inactive"
-              src="Epic.png"
-              alt="Epic rank icon"
-            />
-          </Link>
-          <Link to="/mythic">
-            <img 
-              className="mh-rank-icon mh-rank-icon-inactive"
-              src="Mythic.png"
-              alt="Mythic rank icon"
-            />
-          </Link>
-          <img 
-            className="mh-rank-icon mh-rank-icon-active"
-            src="MythicHonor.png"
-            alt="Mythical Honor rank icon"
-          />
-          <Link to="/mythical-glory">
-            <img 
-              className="mh-rank-icon mh-rank-icon-inactive"
-              src="MythicGlory.png"
-              alt="Mythical Glory rank icon"
-            />
-          </Link>
+          </Tooltip>
+          
+          <Tooltip content="Mythical Glory Rank">
+            <Link to="/mythical-glory">
+              <img 
+                className="mh-rank-icon mh-rank-icon-inactive"
+                src="MythicGlory.png"
+                alt="Mythical Glory rank icon"
+              />
+            </Link>
+          </Tooltip>
         </div>
-        <Link to={`/lane?word=Rank`} className="mh-lanes-float-button">
-          <span>More on Lanes</span>
-          <img src="/arrow.png" alt="Arrow" className="mh-lanes-arrow-icon" />
-        </Link>
+
+       
       </div>
     </>
   );

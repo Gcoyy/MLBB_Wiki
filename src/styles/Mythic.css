@@ -12,6 +12,7 @@
   width: 100vw;
   min-height: 100vh;
   position: relative;
+  display: flex;
   background-color: transparent;
   overflow-x: hidden;
   overflow-y: auto;
@@ -143,7 +144,7 @@
 /* Main Content Container */
 .my-content-container 
 {
-  top: calc(var(--header-height) + 15vh);
+  top: calc(var(--header-height) + 18vh);
   margin-left: calc(380px + 5vw); 
   padding: 2rem 3rem;
   width: calc(100% - 380px - 5vw); 
@@ -164,14 +165,16 @@
   line-height: 1.2;
 }
 
+/* Vertical line fix */
 .my-vertical-line {
   position: absolute;
-  left: calc(360px + 6.5vw); 
-  top: calc(var(--header-height) + 20vh); 
-  bottom: 0vh; 
+  left: calc(420px + 3%); /* Adjust based on sidebar width */
+  top: calc(var(--header-height) + 20vh);
+  min-height: 1100px;
   width: 4px;
   background: #82bcea;
   z-index: 1;
+  margin-left: -1px; /* Center the line */
 }
 
 
@@ -269,28 +272,49 @@
   color: white;
 
 }
-
 .my-rank-icons-container {
   display: none; /* Hide by default */
 }
 
+
+.my-lanes-button-container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-top: 20px;
+}
+
+.my-lanes-float-container {
+  position: relative;
+  display: inline-block;
+}
+
 .my-lanes-float-button {
-  position: absolute; /* Changed from fixed to absolute */
-  right: 5vw;
+  font-family: 'Inter', sans-serif;
   background-color: #182851;
   color: white;
-  padding: 18px 30px; /* Increased size */
+  padding: 14px 28px;
   border-radius: 40px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 12px;
   font-weight: 700;
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(1rem, 1.5vw, 1.3rem);  text-decoration: none;
+  font-size: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
+
+.my-lanes-float-button:hover {
+  background-color: #1a6fb3;
+  transform: translateY(-2px);
+}
+
+
+.my-lanes-arrow-icon {
+  width: 18px;
+  height: 18px;
+}
+
 
 .my-lanes-float-button:hover {
   background-color: #243b70;
@@ -301,6 +325,75 @@
   height: 30px;
 }
 
+/* Tooltip styles */
+.my-tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.my-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 100;
+  margin-bottom: 5px;
+  pointer-events: none;
+}
+
+.my-tooltip:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
+/* Fixed Tooltip Styles */
+.my-lanes-tooltip {
+  position: absolute;
+  bottom: 100%; /* Positions above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 1000;
+  margin-bottom: 10px;
+  pointer-events: none;
+  min-width: 120px;
+  text-align: center;
+}
+
+.my-lanes-tooltip:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
 /* Tablet and Mobile Media Query (728px) */
 @media only screen and (max-width: 728px) {
   :root {
@@ -310,7 +403,7 @@
   }
 
   .my-mobile-legends-container {
-    padding-top: calc(var(--header-height) + 8vh);
+    padding-top: calc(var(--header-height) + 10vh);
     padding-bottom: 80px; /* Add space for fixed rank icons at bottom */
   }
 
@@ -337,7 +430,7 @@
     width: 95%;
     max-width: 400px;
     padding: 12px;
-  
+    padding-bottom: 20px; /* Add space for the line */
     z-index: 100;
   }
  /* Horizontal line separator */
@@ -349,6 +442,7 @@
   width: 90%;
   height: 2px;
   background: #82bcea;
+  z-index: 1; /* Ensure it stays below content */
 }
 
   .my-rank-icons-container .my-rank-icon {
@@ -379,7 +473,8 @@
     padding: 1.5rem;
     top: calc(var(--header-height) + 2vh);
     margin-bottom: 20px;
-   ;
+    z-index: 2; /* Higher than separator line */
+
   }
 
   .my-vertical-line {
@@ -424,5 +519,21 @@
     grid-template-columns: 1fr;
     font-size: 1.1rem;
     gap: 1rem;
+  }
+
+  .my-tooltip {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+
+  .my-lanes-float-container {
+    position: static; /* Falls to normal flow on mobile */
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .my-lanes-float-button {
+    display: inline-flex;
+    padding: 12px 24px;
   }
 }
