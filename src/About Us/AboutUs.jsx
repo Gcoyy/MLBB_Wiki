@@ -1,6 +1,25 @@
 import "./AboutUs.css"
+import {db} from "../firebase"
+import { collection, getDocs } from "firebase/firestore"
+import { useState, useEffect } from "react"
 
 function AboutUs() {
+    const [developers, setDevelopers] = useState([])
+
+    useEffect(() => {
+        const getDevelopers = async () => {
+            try {
+                const developerCollection = collection(db, "about us");
+                const developerSnapshot = await getDocs(developerCollection);
+                const developerDocuments = developerSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                setDevelopers(developerDocuments);
+            } catch (error) {
+                console.error("Error fetching developer documents: ", error);
+            }
+        }
+        getDevelopers()
+    }, [])
+
     return (
         <div className="AboutUs">
             <div className="about-us-container">
@@ -18,14 +37,12 @@ function AboutUs() {
             <div className="developers-container">
                 <h1>Developers</h1>
                 <div className="developers-content">
-                    <div className="developers">
-                        <img className="picture" src="/Gcoy.png" alt="picture of Giancarlo B. De Jesus" />
-                        <p>Giancarlo B. De Jesus is a full-stack developer and web application developer at Yber Digitals, currently a 3rd-year BSIT student in CCS. With a strong foundation in both front-end and back-end technologies, he specializes in creating user-friendly and efficient digital solutions.</p>
-                    </div>
-                    <div className="developers">
-                        <img  className="picture" src="/Lance.png" alt="picture of Lance Christian L. Villanueva" />
-                        <p>Lance Christian L. Villanueva is a 3rd-year Bachelor of Science in Information Technology (BSIT) student at Silliman University, specializing in back-end development. With a strong foundation in web and software development, he has worked on various projects utilizing PHP and React.</p>
-                    </div>
+                    {developers.map(developer => (
+                        <div className="developers" key={developer.id}>
+                            <img className="picture" src={developer.picture} alt={developer.alt} />
+                            <p>{developer.description}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
