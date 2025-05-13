@@ -144,14 +144,14 @@
 .wg-content-container 
 {
   top: calc(var(--header-height) + 15vh);
-  margin-left: calc(380px + 5vw); /* Sidebar width + margin */
+  margin-left: calc(380px + 5vw); 
   padding: 2rem 3rem;
-  width: calc(100% - 380px - 5vw); /* Full width minus sidebar */
+  width: calc(100% - 380px - 5vw); 
   max-width: 1200px;
   position: relative;
   box-sizing: border-box;
-  backdrop-filter: blur(5px); /* Added glass effect */
-  border-radius: 12px; /* Added rounded corners */
+  backdrop-filter: blur(5px); 
+  border-radius: 12px; 
 }
 
 /* Content Styling */
@@ -166,9 +166,9 @@
 
 .wg-vertical-line {
   position: absolute;
-  left: calc(360px + 6.5vw); /* Match sidebar width + left position */
-  top: calc(var(--header-height) + 20vh); /* Align with content start */
-  bottom: 0vh; /* Stops before bottom of page */
+  left: 32%; /* Adjust this until it lines up with your layout */
+  top: calc(var(--header-height) + 20vh); 
+  bottom: 0; 
   width: 4px;
   background: #82bcea;
   z-index: 1;
@@ -266,34 +266,46 @@
   font-size: clamp(1rem, 1.5vw, 1.3rem);
   font-weight: 400;
   gap: 1.5rem;
+  color: white;
+
 }
 .wg-rank-icons-container {
   display: none; /* Hide by default */
 }
 
-.lanes-float-button {
-  position: absolute; /* Changed from fixed to absolute */
-  right: 5vw;
-  background-color: #182851;
-  color: white;
-  padding: 18px 30px; /* Increased size */
-  border-radius: 40px;
+.wg-lanes-float-button {
+  position: absolute;
+  right: 40px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-weight: bold;
-  font-size: 18px; /* Increased font size */
+  gap: 10px;
+  padding: 12px 18px;
+  background-color: #182851;
+  color: #FFFFFF;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
   transition: background-color 0.3s ease;
+  z-index: 1000;
 }
 
-.lanes-float-button:hover {
+.wg-lanes-float-button:hover {
+  background-color: #2A3B6E;
+}
+
+.wg-lanes-arrow-icon {
+  width: 18px;
+  height: 18px;
+}
+
+
+.wg-lanes-float-button:hover {
   background-color: #243b70;
 }
 
-.lanes-arrow-icon {
+.wg-lanes-arrow-icon {
   width: 30px;  /* Slightly bigger */
   height: 30px;
 }
@@ -307,7 +319,7 @@
   }
 
   .wg-mobile-legends-container {
-    padding-top: var(--header-height);
+    padding-top: calc(var(--header-height) + 8vh);
     padding-bottom: 80px; /* Add space for fixed rank icons at bottom */
   }
 
@@ -324,7 +336,7 @@
   /* Mobile rank icons - fixed at bottom */
   .wg-rank-icons-container {
     position: absolute;
-    bottom: 15px;
+    top: 8vh;
     left: 0;
     right: 0;
     display: flex;
@@ -341,7 +353,7 @@
  .wg-rank-icons-container::before {
   content: "";
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 5%;
   width: 90%;
   height: 2px;

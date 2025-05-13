@@ -1,3 +1,4 @@
+
 :root {
   --header-height: 1vh;
   --header-height-mobile: 10vh;
@@ -19,11 +20,11 @@
 
 .mg-background-image {
   position: fixed;
-  top: 0;
+  top: 0; /* Changed from var(--header-height) to 0 to fill entire screen */
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: -1; /* Changed from 2 to -1 to stay behind content */
   box-shadow: inset 0px 125px 20px 20px rgba(0, 0, 0, 0.25);
   filter: blur(10px);
   object-fit: cover;
@@ -138,17 +139,19 @@
   margin: 0.5rem auto 0;
 }
 
+
 /* Main Content Container */
-.mg-content-container {
+.mg-content-container 
+{
   top: calc(var(--header-height) + 15vh);
-  margin-left: calc(380px + 5vw);
+  margin-left: calc(380px + 5vw); 
   padding: 2rem 3rem;
-  width: calc(100% - 380px - 5vw);
+  width: calc(100% - 380px - 5vw); 
   max-width: 1200px;
   position: relative;
   box-sizing: border-box;
-  backdrop-filter: blur(5px);
-  border-radius: 12px;
+  backdrop-filter: blur(5px); 
+  border-radius: 12px; 
 }
 
 /* Content Styling */
@@ -163,13 +166,15 @@
 
 .mg-vertical-line {
   position: absolute;
-  left: calc(360px + 6.5vw);
-  top: calc(var(--header-height) + 20vh);
-  bottom: 0vh;
+  left: calc(360px + 6.5vw); 
+  top: calc(var(--header-height) + 20vh); 
+  bottom: 0vh; 
   width: 4px;
   background: #82bcea;
   z-index: 1;
 }
+
+
 
 .mg-subtitle {
   font-family: 'Inter', sans-serif;
@@ -261,11 +266,13 @@
   font-size: clamp(1rem, 1.5vw, 1.3rem);
   font-weight: 400;
   gap: 1.5rem;
+  color: white;
+
+}
+.mg-rank-icons-container {
+  display: none; /* Hide by default */
 }
 
-.mg-rank-icons-container {
-  display: none;
-}
 .lanes-float-button {
   position: absolute; /* Changed from fixed to absolute */
   right: 5vw;
@@ -292,31 +299,34 @@
   width: 30px;  /* Slightly bigger */
   height: 30px;
 }
+
 /* Tablet and Mobile Media Query (728px) */
 @media only screen and (max-width: 728px) {
   :root {
-    --header-height: 3vh;
+    --header-height: 3vh; /* Increased from 3vh for better mobile header */
     --content-margin-left: 0;
     --content-width: 90vw;
   }
 
   .mg-mobile-legends-container {
-    padding-top: var(--header-height);
-    padding-bottom: 80px;
+    padding-top: calc(var(--header-height) + 8vh);
+    padding-bottom: 80px; /* Add space for fixed rank icons at bottom */
   }
 
   .mg-background-image {
-    height: 100vh;
-    top: 0;
+    height: 100vh; /* Full viewport height */
+    top: 0; /* Cover entire screen */
   }
 
+  /* Hide the original sidebar completely */
   .mg-rank-sidebar {
     display: none;
   }
 
+  /* Mobile rank icons - fixed at bottom */
   .mg-rank-icons-container {
     position: absolute;
-    bottom: 15px;
+    top: 8vh;
     left: 0;
     right: 0;
     display: flex;
@@ -326,18 +336,19 @@
     width: 95%;
     max-width: 400px;
     padding: 12px;
+  
     z-index: 100;
   }
-
-  .mg-rank-icons-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 5%;
-    width: 90%;
-    height: 2px;
-    background: #82bcea;
-  }
+ /* Horizontal line separator */
+ .mg-rank-icons-container::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background: #82bcea;
+}
 
   .mg-rank-icons-container .mg-rank-icon {
     width: 50px;
@@ -360,12 +371,14 @@
     transform: scale(1.05);
   }
 
+  /* Content adjustments */
   .mg-content-container {
     margin-left: 0;
     width: 90%;
     padding: 1.5rem;
     top: calc(var(--header-height) + 2vh);
     margin-bottom: 20px;
+   ;
   }
 
   .mg-vertical-line {
@@ -374,14 +387,14 @@
 
   .mg-main-title {
     font-size: 1.9rem;
-    text-align: left;
+    text-align: left; /* Changed from center to left */
     margin-top: 0.5rem;
     margin-bottom: 0.8rem;
   }
 
   .mg-subtitle {
     font-size: 1.2rem;
-    text-align: left;
+    text-align: left; /* Changed from center to left */
     margin-bottom: 1.5rem;
     color: rgba(255, 255, 255, 0.9);
   }
