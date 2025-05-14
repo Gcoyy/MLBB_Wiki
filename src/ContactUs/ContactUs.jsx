@@ -66,7 +66,7 @@ function ContactUs() {
               contacts.map((contact) => (
                 <div className="contact-method" key={contact.id}>
                   <div className="icon-and-heading">
-                    <img className="contact-icon" src={contact.icon} alt={contact.type} />
+                    <img className="contact-icon" src={contact.icon} alt={contact.type} title={contact.type}/>
                     <h3>{contact.title.split('\n').map((line, i) => <React.Fragment key={i}>{line}<br/></React.Fragment>)}</h3>
                   </div>
                   <p className="contact-description">{contact.description}</p>

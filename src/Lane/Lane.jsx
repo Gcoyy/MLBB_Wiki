@@ -95,6 +95,7 @@ if (!selectedLane) return <div>Loading...</div>;
                 alt={lane.name}
                 className="icon-sm"
                 style={{ opacity: selectedLane.id === lane.id ? 1 : 0.25 }}
+                title={lane.name}
               />
               {selectedLane.id === lane.id && (
                 <span className="lane-name">{lane.name}</span>
@@ -106,7 +107,7 @@ if (!selectedLane) return <div>Loading...</div>;
         {/* Main Content */}
         <div className="main">
           <div className="lane-content-left">
-            <img src={selectedLane.icon} alt={selectedLane.name} className="icon" />
+            <img src={selectedLane.icon} alt={selectedLane.name} className="icon" title={selectedLane.name}/>
             <div className="line1" />
             <h1 className="lane-title">{selectedLane.name.toUpperCase()}</h1>
             <div className="line2" />
@@ -121,12 +122,10 @@ if (!selectedLane) return <div>Loading...</div>;
               ))}
             </div>
 
-            {selectedLane.heroes.length > 3 && (
-              <div className="carousel-btn-container">
-                <button className="carousel-btn-prev" onClick={() => handleHeroChange(heroIndex - 1)}>‹</button>
-                <button className="carousel-btn-next" onClick={handleNext}>›</button>
-              </div>
-            )}
+            <div className="carousel-btn-container" style={{ display: selectedLane.heroes.length > 3 || window.innerWidth < 768 ? 'flex' : 'none' }}>
+              <button className="carousel-btn-prev" onClick={() => handleHeroChange(heroIndex - 1)}>‹</button>
+              <button className="carousel-btn-next" onClick={handleNext}>›</button>
+            </div>
           </div>
         </div>
       </div>

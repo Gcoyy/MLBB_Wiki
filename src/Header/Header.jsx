@@ -33,7 +33,7 @@ const Header = () => {
         )}
       </div>
 
-      <img className="logo" src="/Logo.png" alt="Logo" />
+      <img className="logo" src="/Logo.png" alt="Logo" title="Logo"/>
 
       <div className={`menu ${menuOpen ? "active" : ""}`}>
         <Link to="/" className={`home ${isActive("/")}`} onClick={handleLinkClick}>HOME</Link>
