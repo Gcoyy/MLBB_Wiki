@@ -8,7 +8,7 @@ function SiteMap() {
             <div className='sitemap-container'>
                 <div className='sitemap-container-left'>
                     <Link to ='/' className='sitemap-container-item'>HOME</Link>
-                    <Link to ='/rank' className='sitemap-container-item'>RANK</Link>
+                    <Link to ='/warrior-gm' className='sitemap-container-item'>RANK</Link>
                     <Link to={`/lane?word=SITE Map`} className='sitemap-container-item'>LANE</Link>
                     <Link to ='/contact' className='sitemap-container-item'>CONTACT</Link>
                 </div>
