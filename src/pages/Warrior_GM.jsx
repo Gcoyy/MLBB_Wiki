@@ -95,15 +95,6 @@ const WarriorGM = () => {
   return (
     <>
       <div className="wg-mobile-legends-container">
-        {/* Background image with tooltip */}
-        <Tooltip content="Mobile Legends background image">
-          <img 
-            className="wg-background-image" 
-            src="Background.png" 
-            alt="Mobile Legends background" 
-          />
-        </Tooltip>
-
         {/* Desktop Sidebar Navigation - hidden on mobile */}
         <div className="wg-rank-sidebar">
           {/* Warrior - Grandmaster Group */}
@@ -300,7 +291,7 @@ const WarriorGM = () => {
           </Tooltip>
 
           <Tooltip content="Mythical Glory Rank">
-            <Link to="/mythical-glory">
+             <Link to="/mythical-glory">
               <img 
                 className="wg-rank-icon wg-rank-icon-inactive"
                 src="MythicGlory.png"

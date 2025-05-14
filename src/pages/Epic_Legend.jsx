@@ -93,15 +93,6 @@ const EpicLegend = () => {
   return (
     <>
       <div className="el-mobile-legends-container">
-        {/* Background image with tooltip */}
-        <Tooltip content="Mobile Legends background image">
-          <img 
-            className="el-background-image" 
-            src="Background.png" 
-            alt="Mobile Legends background" 
-          />
-        </Tooltip>
-
         {/* Desktop Sidebar Navigation - hidden on mobile */}
         <div className="el-rank-sidebar">
           {/* Warrior - Grandmaster Group */}

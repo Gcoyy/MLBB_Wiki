@@ -94,15 +94,6 @@ const Mythic = () => {
   return (
     <>
       <div className="my-mobile-legends-container">
-        {/* Background image with tooltip */}
-        <Tooltip content="Mobile Legends background image">
-          <img 
-            className="my-background-image" 
-            src="Background.png" 
-            alt="Mobile Legends background" 
-          />
-        </Tooltip>
-
         {/* Desktop Sidebar Navigation - hidden on mobile */}
         <div className="my-rank-sidebar">
           {/* Warrior - Grandmaster Group */}
@@ -240,15 +231,15 @@ const Mythic = () => {
               </div>
             </div>
           {/* Fixed Lane Button with separate hover state */}
-          <div className="wg-lanes-float-container"
+          <div className="my-lanes-float-container"
      onMouseEnter={() => setShowLaneTooltip(true)}
      onMouseLeave={() => setShowLaneTooltip(false)}>
-  <Link to={`/lane?word=Rank`} className="wg-lanes-float-button">
+  <Link to={`/lane?word=Rank`} className="my-lanes-float-button">
     <span>More on Lanes</span>
-    <img src="/arrow.png" alt="Arrow" className="wg-lanes-arrow-icon" />
+    <img src="/arrow.png" alt="Arrow" className="my-lanes-arrow-icon" />
   </Link>
   {showLaneTooltip && (
-    <div className="wg-lanes-tooltip">
+    <div className="my-lanes-tooltip">
       Learn more about lanes
     </div>
   )}
