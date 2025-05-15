@@ -38,7 +38,6 @@ const Header = () => {
       <div className={`menu ${menuOpen ? "active" : ""}`}>
         <Link to="/" className={`home ${isActive("/")}`} onClick={handleLinkClick}>HOME</Link>
         
-        {/* Rank Dropdown */}
         <div 
           className={`rank-dropdown ${isActive("/warrior-gm") || isActive("/epic-legend") || isActive("/mythic") || isActive("/mythical-honor") || isActive("/mythical-glory") ? "active" : ""}`}
           onClick={toggleRankDropdown}
